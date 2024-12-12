@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_80934346134830a9820af4ea78b37351 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 250px; height: 300px; 
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; padding: 10px;">
+<h4>Legend</h4>
+<b>Hospitals</b><br>
+<i style="background:darkblue; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Надкластерний ЗОЗ<br>
+<i style="background:blue; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Кластерний ЗОЗ<br>
+<i style="background:lightblue; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Загальний ЗОЗ<br>
+<br>
+<b>EMS Centers</b><br>
+<i style="background:darkred; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> ЦЕМД<br>
+<i style="background:red; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Станція<br>
+<i style="background:orange; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Підстанція<br>
+<i style="background:yellow; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Пункт базування<br>
+<i style="background:green; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> ОДС<br>
+</div>
+    
+            <div class="folium-map" id="map_80934346134830a9820af4ea78b37351" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_80934346134830a9820af4ea78b37351 = L.map(
+                "map_80934346134830a9820af4ea78b37351",
+                {
+                    center: [49.9935, 36.2304],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9279cfbab7cad7349d34613876f81b2d = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_9279cfbab7cad7349d34613876f81b2d.addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var marker_fb28600de790b56bef6e0054eef20377 = L.marker(
+                [50.0078466, 36.2310019],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_9f5d6fc64e9b9ac230fda29f1f2d956e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_fb28600de790b56bef6e0054eef20377.setIcon(icon_9f5d6fc64e9b9ac230fda29f1f2d956e);
+        
+    
+        var popup_deb8f045a64ea69187d9c58d828a5e44 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e70dddcd5b7376f0016ab9f8588a6e2c = $(`<div id="html_e70dddcd5b7376f0016ab9f8588a6e2c" style="width: 100.0%; height: 100.0%;">Hospital: КНП ХАРКІВСЬКОЇ ОБЛАСНОЇ РАДИ «ОБЛАСНА КЛІНІЧНА ЛІКАРНЯ» (Надкластерний ЗОЗ)</div>`)[0];
+                popup_deb8f045a64ea69187d9c58d828a5e44.setContent(html_e70dddcd5b7376f0016ab9f8588a6e2c);
+            
+        
+
+        marker_fb28600de790b56bef6e0054eef20377.bindPopup(popup_deb8f045a64ea69187d9c58d828a5e44)
+        ;
+
+        
+    
+    
+            var marker_563ae5a530c0e15b16acbd81e9991d9f = L.marker(
+                [49.9918785, 36.1940086],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_28714410fc5fb3565da5f590dd4c1554 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_563ae5a530c0e15b16acbd81e9991d9f.setIcon(icon_28714410fc5fb3565da5f590dd4c1554);
+        
+    
+        var popup_67db52c02b6e730cf6bf07a5ecf8cc47 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8c04ced3ce8d78044d4031e76822bbb0 = $(`<div id="html_8c04ced3ce8d78044d4031e76822bbb0" style="width: 100.0%; height: 100.0%;">Hospital: КНП ХАРКІВСЬКОЇ ОБЛАСНОЇ РАДИ «ОБЛАСНА ДИТЯЧА КЛІНІЧНА ЛІКАРНЯ» (Надкластерний ЗОЗ)</div>`)[0];
+                popup_67db52c02b6e730cf6bf07a5ecf8cc47.setContent(html_8c04ced3ce8d78044d4031e76822bbb0);
+            
+        
+
+        marker_563ae5a530c0e15b16acbd81e9991d9f.bindPopup(popup_67db52c02b6e730cf6bf07a5ecf8cc47)
+        ;
+
+        
+    
+    
+            var marker_fabf61f62adb062e2cd589b64b7922ce = L.marker(
+                [50.0377321, 36.2823126],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_83cd2fd01bf6c8abe6b3a518dc309b00 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_fabf61f62adb062e2cd589b64b7922ce.setIcon(icon_83cd2fd01bf6c8abe6b3a518dc309b00);
+        
+    
+        var popup_0d0c2bfdfd9561552b89d3bf3aee4cb4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_480e51532590a77712abe5f95f7ce88a = $(`<div id="html_480e51532590a77712abe5f95f7ce88a" style="width: 100.0%; height: 100.0%;">Hospital: КНП «ОБЛАСНИЙ ЦЕНТР ОНКОЛОГІЇ» (Надкластерний ЗОЗ)</div>`)[0];
+                popup_0d0c2bfdfd9561552b89d3bf3aee4cb4.setContent(html_480e51532590a77712abe5f95f7ce88a);
+            
+        
+
+        marker_fabf61f62adb062e2cd589b64b7922ce.bindPopup(popup_0d0c2bfdfd9561552b89d3bf3aee4cb4)
+        ;
+
+        
+    
+    
+            var marker_6c6d471a922d42fa9fa3e27dec214adb = L.marker(
+                [50.0048626, 36.3120993],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_e3c1bf85c532b6b79c0addfd7f736670 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_6c6d471a922d42fa9fa3e27dec214adb.setIcon(icon_e3c1bf85c532b6b79c0addfd7f736670);
+        
+    
+        var popup_de3e2783b2bfd602cccb48e41aad9317 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6618b97c458ca0f329913953a834f977 = $(`<div id="html_6618b97c458ca0f329913953a834f977" style="width: 100.0%; height: 100.0%;">Hospital: КНП «ОБЛАСНА КЛІНІЧНА ПСИХІАТРИЧНА ЛІКАРНЯ №3» (Надкластерний ЗОЗ)</div>`)[0];
+                popup_de3e2783b2bfd602cccb48e41aad9317.setContent(html_6618b97c458ca0f329913953a834f977);
+            
+        
+
+        marker_6c6d471a922d42fa9fa3e27dec214adb.bindPopup(popup_de3e2783b2bfd602cccb48e41aad9317)
+        ;
+
+        
+    
+    
+            var marker_b33b293d48339d3627f02dae32717f8e = L.marker(
+                [49.9439643, 36.2930362],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_6dffdf33164d3afaff58a2ab151a1124 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_b33b293d48339d3627f02dae32717f8e.setIcon(icon_6dffdf33164d3afaff58a2ab151a1124);
+        
+    
+        var popup_0c88d66f7ced6f19ab988c0dbb8db15d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c834d6134649ebf89feaf076dbfe4b9b = $(`<div id="html_c834d6134649ebf89feaf076dbfe4b9b" style="width: 100.0%; height: 100.0%;">Hospital: КОМУНАЛЬНЕ НЕКОМЕРЦІЙНЕ ПІДПРИЄМСТВО ХАРКІВСЬКОЇ ОБЛАСНОЇ РАДИ "ОБЛАСНА ДИТЯЧА ІНФЕКЦІЙНА КЛІНІЧНА ЛІКАРНЯ" (Надкластерний ЗОЗ)</div>`)[0];
+                popup_0c88d66f7ced6f19ab988c0dbb8db15d.setContent(html_c834d6134649ebf89feaf076dbfe4b9b);
+            
+        
+
+        marker_b33b293d48339d3627f02dae32717f8e.bindPopup(popup_0c88d66f7ced6f19ab988c0dbb8db15d)
+        ;
+
+        
+    
+    
+            var marker_cd4944136c6169a68daff92cbeb90fe8 = L.marker(
+                [50.03878, 36.2454301],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_62019412c6c2d5bddebaecdc9f42840a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_cd4944136c6169a68daff92cbeb90fe8.setIcon(icon_62019412c6c2d5bddebaecdc9f42840a);
+        
+    
+        var popup_e2f264b4070e395f3277420c17f3912b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ec90644dc9355cf073af8f6b138a26c6 = $(`<div id="html_ec90644dc9355cf073af8f6b138a26c6" style="width: 100.0%; height: 100.0%;">Hospital: КАРДІОЛОГІЧНИЙ ЦЕНТР (в процесі утворення) (Надкластерний ЗОЗ)</div>`)[0];
+                popup_e2f264b4070e395f3277420c17f3912b.setContent(html_ec90644dc9355cf073af8f6b138a26c6);
+            
+        
+
+        marker_cd4944136c6169a68daff92cbeb90fe8.bindPopup(popup_e2f264b4070e395f3277420c17f3912b)
+        ;
+
+        
+    
+    
+            var marker_503aa84bad725d9fb3b6f20578e23ace = L.marker(
+                [49.990409, 36.2117459],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_d02fe95eebca2db970bdbb930b236667 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "darkblue", "prefix": "glyphicon"}
+            );
+            marker_503aa84bad725d9fb3b6f20578e23ace.setIcon(icon_d02fe95eebca2db970bdbb930b236667);
+        
+    
+        var popup_309a870114213f7ffa1b82489b0512e9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e79dcbd692afb5c2e613100233579f79 = $(`<div id="html_e79dcbd692afb5c2e613100233579f79" style="width: 100.0%; height: 100.0%;">Hospital: КНП "ОБЛАСНИЙ КЛІНІЧНИЙ ПЕРИНАТАЛЬНИЙ ЦЕНТР" (Надкластерний ЗОЗ)</div>`)[0];
+                popup_309a870114213f7ffa1b82489b0512e9.setContent(html_e79dcbd692afb5c2e613100233579f79);
+            
+        
+
+        marker_503aa84bad725d9fb3b6f20578e23ace.bindPopup(popup_309a870114213f7ffa1b82489b0512e9)
+        ;
+
+        
+    
+    
+            var marker_8237ef9393c8cf5d2058ff0266a3a044 = L.marker(
+                [50.1638056, 35.5258916],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_279bd7e9903a89ddf33e95a52d28a506 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_8237ef9393c8cf5d2058ff0266a3a044.setIcon(icon_279bd7e9903a89ddf33e95a52d28a506);
+        
+    
+        var popup_c43a69c4420b123cb32860057149515d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_84bd1e94956999b9c97c90c0a331ce11 = $(`<div id="html_84bd1e94956999b9c97c90c0a331ce11" style="width: 100.0%; height: 100.0%;">Hospital: КНП Богодухівська центральна районна лікарня Богодухівської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_c43a69c4420b123cb32860057149515d.setContent(html_84bd1e94956999b9c97c90c0a331ce11);
+            
+        
+
+        marker_8237ef9393c8cf5d2058ff0266a3a044.bindPopup(popup_c43a69c4420b123cb32860057149515d)
+        ;
+
+        
+    
+    
+            var marker_f3bd27a3839c5f9fb64f7ba1586e86e7 = L.marker(
+                [49.8387221, 35.6206178],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_aebc807317af380902afc25f86fd960c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_f3bd27a3839c5f9fb64f7ba1586e86e7.setIcon(icon_aebc807317af380902afc25f86fd960c);
+        
+    
+        var popup_a212a03c479f8066348876de79192faa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1e3daa619e3dbb0847195d9e3a873095 = $(`<div id="html_1e3daa619e3dbb0847195d9e3a873095" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Валківська центральна районна лікарня» (Загальний ЗОЗ)</div>`)[0];
+                popup_a212a03c479f8066348876de79192faa.setContent(html_1e3daa619e3dbb0847195d9e3a873095);
+            
+        
+
+        marker_f3bd27a3839c5f9fb64f7ba1586e86e7.bindPopup(popup_a212a03c479f8066348876de79192faa)
+        ;
+
+        
+    
+    
+            var marker_3aec5d3be0967a240baef372ef070a8b = L.marker(
+                [50.0714592, 35.1625493],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_17716583d31659d1fd558b117dce1dd9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_3aec5d3be0967a240baef372ef070a8b.setIcon(icon_17716583d31659d1fd558b117dce1dd9);
+        
+    
+        var popup_9cff12e917b924a4adec472133e425fa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a75837764703ae9d2fd238eee43ac75e = $(`<div id="html_a75837764703ae9d2fd238eee43ac75e" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Краснокутська центральна районна лікарня» Краснокутської селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_9cff12e917b924a4adec472133e425fa.setContent(html_a75837764703ae9d2fd238eee43ac75e);
+            
+        
+
+        marker_3aec5d3be0967a240baef372ef070a8b.bindPopup(popup_9cff12e917b924a4adec472133e425fa)
+        ;
+
+        
+    
+    
+            var marker_263af5b66058a61fe526f6cdadcbfdfa = L.marker(
+                [50.2690697, 35.9760431],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_547c31306a60ebf0aaad31cfad11a734 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_263af5b66058a61fe526f6cdadcbfdfa.setIcon(icon_547c31306a60ebf0aaad31cfad11a734);
+        
+    
+        var popup_0d997c085d807ac0299da60dc9ba6aa1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1a1255a1ec11d073019c71a8cfc73c7d = $(`<div id="html_1a1255a1ec11d073019c71a8cfc73c7d" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Золочівська лікарня» Золочівської селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_0d997c085d807ac0299da60dc9ba6aa1.setContent(html_1a1255a1ec11d073019c71a8cfc73c7d);
+            
+        
+
+        marker_263af5b66058a61fe526f6cdadcbfdfa.bindPopup(popup_0d997c085d807ac0299da60dc9ba6aa1)
+        ;
+
+        
+    
+    
+            var marker_d8318a13b328cfa60038aa6fa6341ee1 = L.marker(
+                [49.1875765, 37.2724915],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_aa37115285d178b821a8a4afdf2e7835 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d8318a13b328cfa60038aa6fa6341ee1.setIcon(icon_aa37115285d178b821a8a4afdf2e7835);
+        
+    
+        var popup_351b68f00e6f0a6d2e84a8aee8457ab1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9ec2d27eaed7d726f9619c032243f564 = $(`<div id="html_9ec2d27eaed7d726f9619c032243f564" style="width: 100.0%; height: 100.0%;">Hospital: КНП Ізюмської міської ради «Центральна міська лікарня Піщанської Богоматері» (Кластерний ЗОЗ)</div>`)[0];
+                popup_351b68f00e6f0a6d2e84a8aee8457ab1.setContent(html_9ec2d27eaed7d726f9619c032243f564);
+            
+        
+
+        marker_d8318a13b328cfa60038aa6fa6341ee1.bindPopup(popup_351b68f00e6f0a6d2e84a8aee8457ab1)
+        ;
+
+        
+    
+    
+            var marker_4f89573ff8167578e75d09960306f725 = L.marker(
+                [49.4643925, 36.8584805],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_29077a67769320fbf6df098ff395749e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_4f89573ff8167578e75d09960306f725.setIcon(icon_29077a67769320fbf6df098ff395749e);
+        
+    
+        var popup_a43569fa315e9bc168c69aa3a1896c03 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e1133e936854b8cd58a144fa55a344d0 = $(`<div id="html_e1133e936854b8cd58a144fa55a344d0" style="width: 100.0%; height: 100.0%;">Hospital: КНП Балаклійської міської ради Харківської області «Балаклійська клінічна багатопрофільна лікарня інтенсивного лікування» (Загальний ЗОЗ)</div>`)[0];
+                popup_a43569fa315e9bc168c69aa3a1896c03.setContent(html_e1133e936854b8cd58a144fa55a344d0);
+            
+        
+
+        marker_4f89573ff8167578e75d09960306f725.bindPopup(popup_a43569fa315e9bc168c69aa3a1896c03)
+        ;
+
+        
+    
+    
+            var marker_35c5ab72b138c0549e43f502cf6785ed = L.marker(
+                [48.918627, 37.0207973],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_619c61c8c4b81970e0c7a7fac5c9367a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_35c5ab72b138c0549e43f502cf6785ed.setIcon(icon_619c61c8c4b81970e0c7a7fac5c9367a);
+        
+    
+        var popup_118f6378662542c7fdd877d0cf39cfc8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_475e6217d5b813d34ab7bccdd3a41149 = $(`<div id="html_475e6217d5b813d34ab7bccdd3a41149" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Барвінківська центральна міська лікарня» Барвінківської міської територіальної громади Ізюмського району Харківської області (Загальний ЗОЗ)</div>`)[0];
+                popup_118f6378662542c7fdd877d0cf39cfc8.setContent(html_475e6217d5b813d34ab7bccdd3a41149);
+            
+        
+
+        marker_35c5ab72b138c0549e43f502cf6785ed.bindPopup(popup_118f6378662542c7fdd877d0cf39cfc8)
+        ;
+
+        
+    
+    
+            var marker_49a1deb29dcc261e4b2fd3e6377641ee = L.marker(
+                [49.37304899999999, 35.461353],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_af64c2e87b528d6e4f11eb2808865d03 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_49a1deb29dcc261e4b2fd3e6377641ee.setIcon(icon_af64c2e87b528d6e4f11eb2808865d03);
+        
+    
+        var popup_12d002a1b4cb32168d800180dd6110e1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7d08ecabc0f304c7196f6cfca67d248b = $(`<div id="html_7d08ecabc0f304c7196f6cfca67d248b" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Красноградська центральна районна лікарня» (Кластерний ЗОЗ)</div>`)[0];
+                popup_12d002a1b4cb32168d800180dd6110e1.setContent(html_7d08ecabc0f304c7196f6cfca67d248b);
+            
+        
+
+        marker_49a1deb29dcc261e4b2fd3e6377641ee.bindPopup(popup_12d002a1b4cb32168d800180dd6110e1)
+        ;
+
+        
+    
+    
+            var marker_13188212fef8a878ed19dff85bdd419a = L.marker(
+                [49.1519944, 35.8771294],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_9a111c8895914e05025a1013a35a73d9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_13188212fef8a878ed19dff85bdd419a.setIcon(icon_9a111c8895914e05025a1013a35a73d9);
+        
+    
+        var popup_bd69a8130bdc5f5e8335b45bf2459961 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3d96413b9d8dc1da01335fc670eb54e7 = $(`<div id="html_3d96413b9d8dc1da01335fc670eb54e7" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Сахновщинська центральна лікарня»  Сахновщинської селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_bd69a8130bdc5f5e8335b45bf2459961.setContent(html_3d96413b9d8dc1da01335fc670eb54e7);
+            
+        
+
+        marker_13188212fef8a878ed19dff85bdd419a.bindPopup(popup_bd69a8130bdc5f5e8335b45bf2459961)
+        ;
+
+        
+    
+    
+            var marker_3d7370000d9d76cc29ccfec71ad9df34 = L.marker(
+                [49.193851, 35.2461823],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_120264b184292618358842ec60dcdf16 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_3d7370000d9d76cc29ccfec71ad9df34.setIcon(icon_120264b184292618358842ec60dcdf16);
+        
+    
+        var popup_23395e2b32b5a4ff9799831597a8983e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d15e3bc719bb7b306530eab71807a406 = $(`<div id="html_d15e3bc719bb7b306530eab71807a406" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Зачепилівська центральна лікарня»Зачепилівської селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_23395e2b32b5a4ff9799831597a8983e.setContent(html_d15e3bc719bb7b306530eab71807a406);
+            
+        
+
+        marker_3d7370000d9d76cc29ccfec71ad9df34.bindPopup(popup_23395e2b32b5a4ff9799831597a8983e)
+        ;
+
+        
+    
+    
+            var marker_1b53f1469a14a7d1a658369e4a6bb5dd = L.marker(
+                [49.37304899999999, 35.461353],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_540ba20d070fd1e15b45f93b993f0fc7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_1b53f1469a14a7d1a658369e4a6bb5dd.setIcon(icon_540ba20d070fd1e15b45f93b993f0fc7);
+        
+    
+        var popup_1da6209d8bb324d885582555cb4259bb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_515e9a5e748081ba9b36fda0955caba9 = $(`<div id="html_515e9a5e748081ba9b36fda0955caba9" style="width: 100.0%; height: 100.0%;">Hospital:  КНП Кегичівської селищної ради «Кегичівська центральна районна лікарня» (Загальний ЗОЗ)</div>`)[0];
+                popup_1da6209d8bb324d885582555cb4259bb.setContent(html_515e9a5e748081ba9b36fda0955caba9);
+            
+        
+
+        marker_1b53f1469a14a7d1a658369e4a6bb5dd.bindPopup(popup_1da6209d8bb324d885582555cb4259bb)
+        ;
+
+        
+    
+    
+            var marker_253f4f044f4dedb9dca1b08f83cf631d = L.marker(
+                [49.7174603, 37.6017875],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_5d7a0206a215bde045687e3b145972f4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_253f4f044f4dedb9dca1b08f83cf631d.setIcon(icon_5d7a0206a215bde045687e3b145972f4);
+        
+    
+        var popup_ae53184e0fde64dbe7edc43d035e581f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3ba5b86173ef730649192d40faa60d74 = $(`<div id="html_3ba5b86173ef730649192d40faa60d74" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Куп;янське територіальне медичне об'єднання» Куп’янської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_ae53184e0fde64dbe7edc43d035e581f.setContent(html_3ba5b86173ef730649192d40faa60d74);
+            
+        
+
+        marker_253f4f044f4dedb9dca1b08f83cf631d.bindPopup(popup_ae53184e0fde64dbe7edc43d035e581f)
+        ;
+
+        
+    
+    
+            var marker_2d9942fa375565bf8e85d0b69854d7c5 = L.marker(
+                [50.0600037, 37.3822945],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_e99db18fc78ad42c5b15a9841966f534 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_2d9942fa375565bf8e85d0b69854d7c5.setIcon(icon_e99db18fc78ad42c5b15a9841966f534);
+        
+    
+        var popup_267ea67db88a1c4456af7188a01617ac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4e5d55fc09a81f9936007845a4039035 = $(`<div id="html_4e5d55fc09a81f9936007845a4039035" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Великобурлуцька центральна лікарня» Великобурлуцької селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_267ea67db88a1c4456af7188a01617ac.setContent(html_4e5d55fc09a81f9936007845a4039035);
+            
+        
+
+        marker_2d9942fa375565bf8e85d0b69854d7c5.bindPopup(popup_267ea67db88a1c4456af7188a01617ac)
+        ;
+
+        
+    
+    
+            var marker_adf4cac593a6a5ae90808176748dbb3d = L.marker(
+                [49.8506712, 37.480875],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_15e2e72e6fcd07cef269f4c23feecdfa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_adf4cac593a6a5ae90808176748dbb3d.setIcon(icon_15e2e72e6fcd07cef269f4c23feecdfa);
+        
+    
+        var popup_714fa8487f101ab6f2a9816922f835fa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5df3b73fb0c83bea3d697cec0d4ca3c8 = $(`<div id="html_5df3b73fb0c83bea3d697cec0d4ca3c8" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Шевченківська центральна районна лікарня» Шевченківської селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_714fa8487f101ab6f2a9816922f835fa.setContent(html_5df3b73fb0c83bea3d697cec0d4ca3c8);
+            
+        
+
+        marker_adf4cac593a6a5ae90808176748dbb3d.bindPopup(popup_714fa8487f101ab6f2a9816922f835fa)
+        ;
+
+        
+    
+    
+            var marker_7e7cb819bb805dcf4a9902841472ce55 = L.marker(
+                [48.8837253, 36.2953537],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_b6e183fb299c26d4add5d08e2fecd7ac = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_7e7cb819bb805dcf4a9902841472ce55.setIcon(icon_b6e183fb299c26d4add5d08e2fecd7ac);
+        
+    
+        var popup_2806d56b3cd0e7dd2279afca0349966a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f554fce92293e74a79886125e9d76ab9 = $(`<div id="html_f554fce92293e74a79886125e9d76ab9" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Лозівське територіальне медичне об'єднання» Лозівської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_2806d56b3cd0e7dd2279afca0349966a.setContent(html_f554fce92293e74a79886125e9d76ab9);
+            
+        
+
+        marker_7e7cb819bb805dcf4a9902841472ce55.bindPopup(popup_2806d56b3cd0e7dd2279afca0349966a)
+        ;
+
+        
+    
+    
+            var marker_17ce3c9c63e9318b17f0432aa6da1a38 = L.marker(
+                [48.8557611, 36.5445795],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_cb8895854def10971042583ba30b206f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_17ce3c9c63e9318b17f0432aa6da1a38.setIcon(icon_cb8895854def10971042583ba30b206f);
+        
+    
+        var popup_19078837af9c007c8dade19fb9f27b56 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_20915455d917827088152af70dc526f1 = $(`<div id="html_20915455d917827088152af70dc526f1" style="width: 100.0%; height: 100.0%;">Hospital: КП «Близнюківська центральна районна лікарня» (Загальний ЗОЗ)</div>`)[0];
+                popup_19078837af9c007c8dade19fb9f27b56.setContent(html_20915455d917827088152af70dc526f1);
+            
+        
+
+        marker_17ce3c9c63e9318b17f0432aa6da1a38.bindPopup(popup_19078837af9c007c8dade19fb9f27b56)
+        ;
+
+        
+    
+    
+            var marker_866fbdc74fe182ce589acfff78f680fb = L.marker(
+                [49.3963328, 36.2220977],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_af5610f268187605a15b40b3d58260a4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_866fbdc74fe182ce589acfff78f680fb.setIcon(icon_af5610f268187605a15b40b3d58260a4);
+        
+    
+        var popup_8011a8405ebf454a184fceeb4bf8e12b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7d998633679253c409021409e047dbf5 = $(`<div id="html_7d998633679253c409021409e047dbf5" style="width: 100.0%; height: 100.0%;">Hospital: КНП Первомайська центральна районна лікарня (Загальний ЗОЗ)</div>`)[0];
+                popup_8011a8405ebf454a184fceeb4bf8e12b.setContent(html_7d998633679253c409021409e047dbf5);
+            
+        
+
+        marker_866fbdc74fe182ce589acfff78f680fb.bindPopup(popup_8011a8405ebf454a184fceeb4bf8e12b)
+        ;
+
+        
+    
+    
+            var marker_f6b8a4243e119043b4e16ba2774fb008 = L.marker(
+                [49.9804934, 36.2690893],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_047a8be9783bd085ab5937474a2e4db4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_f6b8a4243e119043b4e16ba2774fb008.setIcon(icon_047a8be9783bd085ab5937474a2e4db4);
+        
+    
+        var popup_e58be5931a9ec571103773ab1589885d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_36ae79138b8839d29e713cc7911b5eca = $(`<div id="html_36ae79138b8839d29e713cc7911b5eca" style="width: 100.0%; height: 100.0%;">Hospital: КНП Мереф'янської міської ради «Мереф’янська центральна районна лікарня» (Кластерний ЗОЗ)</div>`)[0];
+                popup_e58be5931a9ec571103773ab1589885d.setContent(html_36ae79138b8839d29e713cc7911b5eca);
+            
+        
+
+        marker_f6b8a4243e119043b4e16ba2774fb008.bindPopup(popup_e58be5931a9ec571103773ab1589885d)
+        ;
+
+        
+    
+    
+            var marker_d0b95ea3b7d1358a444a36dd58b34dfb = L.marker(
+                [50.065723, 36.1611737],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_d685cfd7468ed0ce12a468d5f00dbf32 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_d0b95ea3b7d1358a444a36dd58b34dfb.setIcon(icon_d685cfd7468ed0ce12a468d5f00dbf32);
+        
+    
+        var popup_696cb7a892aafa142c05648f23d2a95a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f4105836d3c26eeef659d1e72b0590c3 = $(`<div id="html_f4105836d3c26eeef659d1e72b0590c3" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Дергачівська центральна лікарня» Дергачівської міської ради Харківської області (Кластерний ЗОЗ)</div>`)[0];
+                popup_696cb7a892aafa142c05648f23d2a95a.setContent(html_f4105836d3c26eeef659d1e72b0590c3);
+            
+        
+
+        marker_d0b95ea3b7d1358a444a36dd58b34dfb.bindPopup(popup_696cb7a892aafa142c05648f23d2a95a)
+        ;
+
+        
+    
+    
+            var marker_919311a2e28929010a127e5211cfd3b8 = L.marker(
+                [50.0375369, 36.2404341],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_996c8c19397903af71c7ab7fd15fdd50 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_919311a2e28929010a127e5211cfd3b8.setIcon(icon_996c8c19397903af71c7ab7fd15fdd50);
+        
+    
+        var popup_586bfac904e467ee48520b8ad206f3c5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_796621b5487606d6ae8c7b87462ae735 = $(`<div id="html_796621b5487606d6ae8c7b87462ae735" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна лікарня швидкої та невідкладної медичної допомоги ім. проф. О. І. Мещанінова» Харківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_586bfac904e467ee48520b8ad206f3c5.setContent(html_796621b5487606d6ae8c7b87462ae735);
+            
+        
+
+        marker_919311a2e28929010a127e5211cfd3b8.bindPopup(popup_586bfac904e467ee48520b8ad206f3c5)
+        ;
+
+        
+    
+    
+            var marker_938e40c7711a558d8f782d8bfe181181 = L.marker(
+                [49.933187, 36.2619082],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_9c6e281788a59c31d30485a02e9f159d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_938e40c7711a558d8f782d8bfe181181.setIcon(icon_9c6e281788a59c31d30485a02e9f159d);
+        
+    
+        var popup_dd859f01a5bd54daf26b052258e5901b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4bc435faf9f3f5ae9d8da39d187be6de = $(`<div id="html_4bc435faf9f3f5ae9d8da39d187be6de" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна лікарня №13» Харківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_dd859f01a5bd54daf26b052258e5901b.setContent(html_4bc435faf9f3f5ae9d8da39d187be6de);
+            
+        
+
+        marker_938e40c7711a558d8f782d8bfe181181.bindPopup(popup_dd859f01a5bd54daf26b052258e5901b)
+        ;
+
+        
+    
+    
+            var marker_71bfc13b9e323e4d97601a0dec2eb1b5 = L.marker(
+                [49.9629817, 36.3359187],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_893a13e613ad2c9f3362b78619ea4165 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_71bfc13b9e323e4d97601a0dec2eb1b5.setIcon(icon_893a13e613ad2c9f3362b78619ea4165);
+        
+    
+        var popup_a2d147ca3b58798c2cf1fd461d606dda = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_126dc6a8f02c465ddbb5d2421289e7e6 = $(`<div id="html_126dc6a8f02c465ddbb5d2421289e7e6" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна багатопрофільна лікарня №17» Харківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_a2d147ca3b58798c2cf1fd461d606dda.setContent(html_126dc6a8f02c465ddbb5d2421289e7e6);
+            
+        
+
+        marker_71bfc13b9e323e4d97601a0dec2eb1b5.bindPopup(popup_a2d147ca3b58798c2cf1fd461d606dda)
+        ;
+
+        
+    
+    
+            var marker_b009b7d455b7ff28d2b04ffa3b5f3db7 = L.marker(
+                [49.9797993, 36.3388384],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_5693331f06ef7aa10aed7e79ff644186 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b009b7d455b7ff28d2b04ffa3b5f3db7.setIcon(icon_5693331f06ef7aa10aed7e79ff644186);
+        
+    
+        var popup_d107a76acb6691796be8cf3255d6ed2e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a353feaed2c60fd7ab0780c4c0628991 = $(`<div id="html_a353feaed2c60fd7ab0780c4c0628991" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська багатопрофільна лікарня №18» Харківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_d107a76acb6691796be8cf3255d6ed2e.setContent(html_a353feaed2c60fd7ab0780c4c0628991);
+            
+        
+
+        marker_b009b7d455b7ff28d2b04ffa3b5f3db7.bindPopup(popup_d107a76acb6691796be8cf3255d6ed2e)
+        ;
+
+        
+    
+    
+            var marker_becd44230b10f8b30932adc227b03778 = L.marker(
+                [49.9463293, 36.3584874],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_f04270fba16bd8ee35c6d13d0957d457 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_becd44230b10f8b30932adc227b03778.setIcon(icon_f04270fba16bd8ee35c6d13d0957d457);
+        
+    
+        var popup_7614ae5017cb5f68b97b30c3dd177d73 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e25eb74ad4860e228e528232ad420f71 = $(`<div id="html_e25eb74ad4860e228e528232ad420f71" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна багатопрофільна лікарня №25» Харківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_7614ae5017cb5f68b97b30c3dd177d73.setContent(html_e25eb74ad4860e228e528232ad420f71);
+            
+        
+
+        marker_becd44230b10f8b30932adc227b03778.bindPopup(popup_7614ae5017cb5f68b97b30c3dd177d73)
+        ;
+
+        
+    
+    
+            var marker_3a7d4e53ea69f7636bad5bec9ab7dba3 = L.marker(
+                [50.0093793, 36.2537141],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_cb22bb44259d13d3270a580b229c8a79 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_3a7d4e53ea69f7636bad5bec9ab7dba3.setIcon(icon_cb22bb44259d13d3270a580b229c8a79);
+        
+    
+        var popup_9bcb8bb4ece5300de8363bef19498456 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_674a345f67592f674271f80c12df9254 = $(`<div id="html_674a345f67592f674271f80c12df9254" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна лікарня №27» Харківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_9bcb8bb4ece5300de8363bef19498456.setContent(html_674a345f67592f674271f80c12df9254);
+            
+        
+
+        marker_3a7d4e53ea69f7636bad5bec9ab7dba3.bindPopup(popup_9bcb8bb4ece5300de8363bef19498456)
+        ;
+
+        
+    
+    
+            var marker_372cdf1959390aacfc50582c843e201f = L.marker(
+                [49.9660976, 36.1824396],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_945c1c075aec60b8585c7007bef97808 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_372cdf1959390aacfc50582c843e201f.setIcon(icon_945c1c075aec60b8585c7007bef97808);
+        
+    
+        var popup_41f9c5501dcb452a86f559f53389dcb7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_89c5125b7c1d33eab74566baa3da9633 = $(`<div id="html_89c5125b7c1d33eab74566baa3da9633" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна лікарня №31» Харківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_41f9c5501dcb452a86f559f53389dcb7.setContent(html_89c5125b7c1d33eab74566baa3da9633);
+            
+        
+
+        marker_372cdf1959390aacfc50582c843e201f.bindPopup(popup_41f9c5501dcb452a86f559f53389dcb7)
+        ;
+
+        
+    
+    
+            var marker_f0f2c3e0bb1a85f61e87caef2f072d12 = L.marker(
+                [49.9409559, 35.9256912],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_2666d387047946d65ea07e161a170b70 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_f0f2c3e0bb1a85f61e87caef2f072d12.setIcon(icon_2666d387047946d65ea07e161a170b70);
+        
+    
+        var popup_401c03cf878b2427926e0c479c0a5892 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8ea19f226758f51ef62d8aa7804516d9 = $(`<div id="html_8ea19f226758f51ef62d8aa7804516d9" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Люботинська міська лікарня» (Загальний ЗОЗ)</div>`)[0];
+                popup_401c03cf878b2427926e0c479c0a5892.setContent(html_8ea19f226758f51ef62d8aa7804516d9);
+            
+        
+
+        marker_f0f2c3e0bb1a85f61e87caef2f072d12.bindPopup(popup_401c03cf878b2427926e0c479c0a5892)
+        ;
+
+        
+    
+    
+            var marker_bd59898b098dac9c6392b7cf5b6bc53e = L.marker(
+                [49.7218493, 35.8674135],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_8c414082e86add764f43b2a1e71e146b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_bd59898b098dac9c6392b7cf5b6bc53e.setIcon(icon_8c414082e86add764f43b2a1e71e146b);
+        
+    
+        var popup_273f86977dddfc418a9f4edc5ee3b5c9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7da30a5426624747c55e461bcfb932ba = $(`<div id="html_7da30a5426624747c55e461bcfb932ba" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Нововодолазька центральна лікарня» Нововодолазької селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_273f86977dddfc418a9f4edc5ee3b5c9.setContent(html_7da30a5426624747c55e461bcfb932ba);
+            
+        
+
+        marker_bd59898b098dac9c6392b7cf5b6bc53e.bindPopup(popup_273f86977dddfc418a9f4edc5ee3b5c9)
+        ;
+
+        
+    
+    
+            var marker_45fc955b6545fbd29582f8ed95c9af2d = L.marker(
+                [49.9629817, 36.3359187],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_1fdb577b00f8fe3c31ae03e7ab24d459 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_45fc955b6545fbd29582f8ed95c9af2d.setIcon(icon_1fdb577b00f8fe3c31ae03e7ab24d459);
+        
+    
+        var popup_bd5a30077f8f8e97c5a878b345c45055 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7ea477e1002e7fae1a7d90a15ff20340 = $(`<div id="html_7ea477e1002e7fae1a7d90a15ff20340" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна лікарня №2 імені проф. О.О.Шалімова» Харківської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_bd5a30077f8f8e97c5a878b345c45055.setContent(html_7ea477e1002e7fae1a7d90a15ff20340);
+            
+        
+
+        marker_45fc955b6545fbd29582f8ed95c9af2d.bindPopup(popup_bd5a30077f8f8e97c5a878b345c45055)
+        ;
+
+        
+    
+    
+            var marker_d29f35a13026b2dcb043642791fb403e = L.marker(
+                [50.0118113, 36.245035],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_483ae4bfec07840203570a0b1785a941 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_d29f35a13026b2dcb043642791fb403e.setIcon(icon_483ae4bfec07840203570a0b1785a941);
+        
+    
+        var popup_0c3a57fd218df264af09eff4814b0b55 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_15abf72cd94c6e6d2e901bda3f41609b = $(`<div id="html_15abf72cd94c6e6d2e901bda3f41609b" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна лікарня №14 ім. проф. Л.Л.Гіршмана» Харківської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_0c3a57fd218df264af09eff4814b0b55.setContent(html_15abf72cd94c6e6d2e901bda3f41609b);
+            
+        
+
+        marker_d29f35a13026b2dcb043642791fb403e.bindPopup(popup_0c3a57fd218df264af09eff4814b0b55)
+        ;
+
+        
+    
+    
+            var marker_d36a1054f14f212fb092d24c7a781a38 = L.marker(
+                [50.0022957, 36.2504863],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_8545bca19b37b218c8e735b7192afdd9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_d36a1054f14f212fb092d24c7a781a38.setIcon(icon_8545bca19b37b218c8e735b7192afdd9);
+        
+    
+        var popup_c3b36acce7f2b73c422865713915e910 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ddf893e3dae18e8a5b5a57e2ce0fadda = $(`<div id="html_ddf893e3dae18e8a5b5a57e2ce0fadda" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська клінічна лікарня №30» Харківської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_c3b36acce7f2b73c422865713915e910.setContent(html_ddf893e3dae18e8a5b5a57e2ce0fadda);
+            
+        
+
+        marker_d36a1054f14f212fb092d24c7a781a38.bindPopup(popup_c3b36acce7f2b73c422865713915e910)
+        ;
+
+        
+    
+    
+            var marker_fbffd2550b4e5830229a57e501a2d347 = L.marker(
+                [49.9543149, 36.3255773],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_94da9747d79ff489bed0f0c1540998d3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_fbffd2550b4e5830229a57e501a2d347.setIcon(icon_94da9747d79ff489bed0f0c1540998d3);
+        
+    
+        var popup_6841d4b7c2245f39c840abb8276c5e04 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d2bf53f60b3c464b0caf7397fa96ace0 = $(`<div id="html_d2bf53f60b3c464b0caf7397fa96ace0" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська дитяча лікарня №5» Харківської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_6841d4b7c2245f39c840abb8276c5e04.setContent(html_d2bf53f60b3c464b0caf7397fa96ace0);
+            
+        
+
+        marker_fbffd2550b4e5830229a57e501a2d347.bindPopup(popup_6841d4b7c2245f39c840abb8276c5e04)
+        ;
+
+        
+    
+    
+            var marker_1081087b123063dbd70fe9558afa0000 = L.marker(
+                [49.9976175, 36.2443452],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_fcea19cd711f5221bc52dc88599bf306 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_1081087b123063dbd70fe9558afa0000.setIcon(icon_fcea19cd711f5221bc52dc88599bf306);
+        
+    
+        var popup_0fb18b03f897bb4a60dc8d9c0f9a88fa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b64ebc62625d6d69f646a0c7d103a4b2 = $(`<div id="html_b64ebc62625d6d69f646a0c7d103a4b2" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Міська студентська лікарня» Харківської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_0fb18b03f897bb4a60dc8d9c0f9a88fa.setContent(html_b64ebc62625d6d69f646a0c7d103a4b2);
+            
+        
+
+        marker_1081087b123063dbd70fe9558afa0000.bindPopup(popup_0fb18b03f897bb4a60dc8d9c0f9a88fa)
+        ;
+
+        
+    
+    
+            var marker_fce41a43cd29184f421a67d6a3b98dd4 = L.marker(
+                [49.8322491, 36.6955739],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_596fb9d903d0eeebffeff73edc9501b9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_fce41a43cd29184f421a67d6a3b98dd4.setIcon(icon_596fb9d903d0eeebffeff73edc9501b9);
+        
+    
+        var popup_9cf7ce96d761b0096a01e2aa88daaa41 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9b36c7011d3b18a2ec876621fe540a3f = $(`<div id="html_9b36c7011d3b18a2ec876621fe540a3f" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Чугуївська центральна лікарня ім. М.І. Кононенка» Чугуївської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_9cf7ce96d761b0096a01e2aa88daaa41.setContent(html_9b36c7011d3b18a2ec876621fe540a3f);
+            
+        
+
+        marker_fce41a43cd29184f421a67d6a3b98dd4.bindPopup(popup_9cf7ce96d761b0096a01e2aa88daaa41)
+        ;
+
+        
+    
+    
+            var marker_72224e5c69ac47462f8470414c9c5d63 = L.marker(
+                [50.295232, 36.9298647],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_c2148d628257b6d4a0b85209e075bde4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_72224e5c69ac47462f8470414c9c5d63.setIcon(icon_c2148d628257b6d4a0b85209e075bde4);
+        
+    
+        var popup_904f160bdfcbe67842f7e1ce320fb87b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_84688966f1aa73cd8b85b8140d1eb5f3 = $(`<div id="html_84688966f1aa73cd8b85b8140d1eb5f3" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Вовчанська центральна районна лікарня» Вовчанської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_904f160bdfcbe67842f7e1ce320fb87b.setContent(html_84688966f1aa73cd8b85b8140d1eb5f3);
+            
+        
+
+        marker_72224e5c69ac47462f8470414c9c5d63.bindPopup(popup_904f160bdfcbe67842f7e1ce320fb87b)
+        ;
+
+        
+    
+    
+            var marker_39631189456db3947579a019a8670770 = L.marker(
+                [49.6787691, 36.3256918],
+                {}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+            var icon_a6631990f41ffd05f0b8ecbbc6a8308b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "hospital-o", "iconColor": "white", "markerColor": "lightblue", "prefix": "glyphicon"}
+            );
+            marker_39631189456db3947579a019a8670770.setIcon(icon_a6631990f41ffd05f0b8ecbbc6a8308b);
+        
+    
+        var popup_5382d2948bf2867f114d544e3fc10c17 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b6da78e50effc6b54c02d8b07e6e59d8 = $(`<div id="html_b6da78e50effc6b54c02d8b07e6e59d8" style="width: 100.0%; height: 100.0%;">Hospital: КНП «Зміївська центральна районна лікарня» Зміївської міської ради  (Загальний ЗОЗ)</div>`)[0];
+                popup_5382d2948bf2867f114d544e3fc10c17.setContent(html_b6da78e50effc6b54c02d8b07e6e59d8);
+            
+        
+
+        marker_39631189456db3947579a019a8670770.bindPopup(popup_5382d2948bf2867f114d544e3fc10c17)
+        ;
+
+        
+    
+    
+            var circle_marker_fba8de779fecb1642b6b52dc6c63fc0d = L.circleMarker(
+                [50.0081559, 36.234458],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_62b9108647a840487a477bb3191abb85 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_aab20887d772e78bad68830a6c092e47 = $(`<div id="html_aab20887d772e78bad68830a6c092e47" style="width: 100.0%; height: 100.0%;">EMS: ЦЕМД (м. Харків,  пр-т Незалежності, 13)</div>`)[0];
+                popup_62b9108647a840487a477bb3191abb85.setContent(html_aab20887d772e78bad68830a6c092e47);
+            
+        
+
+        circle_marker_fba8de779fecb1642b6b52dc6c63fc0d.bindPopup(popup_62b9108647a840487a477bb3191abb85)
+        ;
+
+        
+    
+    
+            var circle_marker_2a1cbc1bd62300952baedd5d39a8f770 = L.circleMarker(
+                [49.9841145, 36.2167377],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_4ad81d2e04d1bef4461aa452ad22567b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_754bb386765bcb86702fc8ee3379d4ca = $(`<div id="html_754bb386765bcb86702fc8ee3379d4ca" style="width: 100.0%; height: 100.0%;">EMS: ОДС (м. Харків, вул. Конторська,41)</div>`)[0];
+                popup_4ad81d2e04d1bef4461aa452ad22567b.setContent(html_754bb386765bcb86702fc8ee3379d4ca);
+            
+        
+
+        circle_marker_2a1cbc1bd62300952baedd5d39a8f770.bindPopup(popup_4ad81d2e04d1bef4461aa452ad22567b)
+        ;
+
+        
+    
+    
+            var circle_marker_703639fca1d50cd7bf0ee220aa08de96 = L.circleMarker(
+                [50.025121, 36.215671],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_f50bbe57ad31467622961e06355f42c6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6c2dab2e7e0f8baae758808fe1072591 = $(`<div id="html_6c2dab2e7e0f8baae758808fe1072591" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Шевченківський р-н, вул. О. Яроша, 3-а)</div>`)[0];
+                popup_f50bbe57ad31467622961e06355f42c6.setContent(html_6c2dab2e7e0f8baae758808fe1072591);
+            
+        
+
+        circle_marker_703639fca1d50cd7bf0ee220aa08de96.bindPopup(popup_f50bbe57ad31467622961e06355f42c6)
+        ;
+
+        
+    
+    
+            var circle_marker_11361f92c75351fa2a16d7e550d4d1b9 = L.circleMarker(
+                [50.00201269999999, 36.3073994],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_17d1d1dbe34cbb0dac7320bbd0dd36ff = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c1df4e4064144f507da6234e820194dd = $(`<div id="html_c1df4e4064144f507da6234e820194dd" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Київський р-н, вул. Челюскінців, 3-а)</div>`)[0];
+                popup_17d1d1dbe34cbb0dac7320bbd0dd36ff.setContent(html_c1df4e4064144f507da6234e820194dd);
+            
+        
+
+        circle_marker_11361f92c75351fa2a16d7e550d4d1b9.bindPopup(popup_17d1d1dbe34cbb0dac7320bbd0dd36ff)
+        ;
+
+        
+    
+    
+            var circle_marker_ffbf8b758dc8e3fbe3287cd3886c3396 = L.circleMarker(
+                [49.9554641, 36.2665078],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_786a2687ab76d2e01656edf985ceffd2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f8d3d27ce0d0a284745f35c5a5003293 = $(`<div id="html_f8d3d27ce0d0a284745f35c5a5003293" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Слобідський р-н, вул. Матросова, 18-а)</div>`)[0];
+                popup_786a2687ab76d2e01656edf985ceffd2.setContent(html_f8d3d27ce0d0a284745f35c5a5003293);
+            
+        
+
+        circle_marker_ffbf8b758dc8e3fbe3287cd3886c3396.bindPopup(popup_786a2687ab76d2e01656edf985ceffd2)
+        ;
+
+        
+    
+    
+            var circle_marker_6b4932826eb39fd4b5d92272c2b61b03 = L.circleMarker(
+                [49.994552, 36.336666],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_155a93b1c2809bbb912791aa85f99758 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d47c2ed845d909b04309094b96f9cae1 = $(`<div id="html_d47c2ed845d909b04309094b96f9cae1" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Московський р-н, пр. Ювілейний, 54-б)</div>`)[0];
+                popup_155a93b1c2809bbb912791aa85f99758.setContent(html_d47c2ed845d909b04309094b96f9cae1);
+            
+        
+
+        circle_marker_6b4932826eb39fd4b5d92272c2b61b03.bindPopup(popup_155a93b1c2809bbb912791aa85f99758)
+        ;
+
+        
+    
+    
+            var circle_marker_3a09afef824efc22459fa7a5d809432d = L.circleMarker(
+                [50.00201269999999, 36.3073994],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_3d12ec716af4fa9012fe2fe40912d5c8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_503966f330dffefa8a7a5a197eb327a1 = $(`<div id="html_503966f330dffefa8a7a5a197eb327a1" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Київський р-н, вул. Челюскінців, 3-а)</div>`)[0];
+                popup_3d12ec716af4fa9012fe2fe40912d5c8.setContent(html_503966f330dffefa8a7a5a197eb327a1);
+            
+        
+
+        circle_marker_3a09afef824efc22459fa7a5d809432d.bindPopup(popup_3d12ec716af4fa9012fe2fe40912d5c8)
+        ;
+
+        
+    
+    
+            var circle_marker_b5178fb52de633cf7bad3acb8ad10b4b = L.circleMarker(
+                [49.98019799999999, 36.1497554],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_eb9213e1e39e4085c15b3e48c73bd685 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_78f7cf8580cb89f19444a6484f3e86f7 = $(`<div id="html_78f7cf8580cb89f19444a6484f3e86f7" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Холодногірський р-н, вул. Башкирська, 11)</div>`)[0];
+                popup_eb9213e1e39e4085c15b3e48c73bd685.setContent(html_78f7cf8580cb89f19444a6484f3e86f7);
+            
+        
+
+        circle_marker_b5178fb52de633cf7bad3acb8ad10b4b.bindPopup(popup_eb9213e1e39e4085c15b3e48c73bd685)
+        ;
+
+        
+    
+    
+            var circle_marker_5dd014b82fefd808c1e57b48a8bd6d33 = L.circleMarker(
+                [49.96053130000001, 36.3091385],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_fe4ef8c11c2d510380da3a39fe7a8666 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4a5284b2b8aa396411428e5e508cef72 = $(`<div id="html_4a5284b2b8aa396411428e5e508cef72" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Немишлянский р-н, вул. Олімпійська, 5)</div>`)[0];
+                popup_fe4ef8c11c2d510380da3a39fe7a8666.setContent(html_4a5284b2b8aa396411428e5e508cef72);
+            
+        
+
+        circle_marker_5dd014b82fefd808c1e57b48a8bd6d33.bindPopup(popup_fe4ef8c11c2d510380da3a39fe7a8666)
+        ;
+
+        
+    
+    
+            var circle_marker_388bf9a950a98cc7166a2dabb7fb952e = L.circleMarker(
+                [50.0386095, 36.3610554],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_54616b0f672cd71361965ff035ab7acc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_825c7a44d8a0e29d18e73949aa5b66d5 = $(`<div id="html_825c7a44d8a0e29d18e73949aa5b66d5" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Харків, Київський р-н, вул. Метробудівників, 19)</div>`)[0];
+                popup_54616b0f672cd71361965ff035ab7acc.setContent(html_825c7a44d8a0e29d18e73949aa5b66d5);
+            
+        
+
+        circle_marker_388bf9a950a98cc7166a2dabb7fb952e.bindPopup(popup_54616b0f672cd71361965ff035ab7acc)
+        ;
+
+        
+    
+    
+            var circle_marker_e7252c0fca4a1baf6713b62332af3b51 = L.circleMarker(
+                [49.4385412, 36.8310266],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_1405c216332724d2d4fe0c3bccc57604 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_85bc4ac2aa25ed1e152b3ecbb1f3af62 = $(`<div id="html_85bc4ac2aa25ed1e152b3ecbb1f3af62" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Балаклея, вул. Жовтнева, 10)</div>`)[0];
+                popup_1405c216332724d2d4fe0c3bccc57604.setContent(html_85bc4ac2aa25ed1e152b3ecbb1f3af62);
+            
+        
+
+        circle_marker_e7252c0fca4a1baf6713b62332af3b51.bindPopup(popup_1405c216332724d2d4fe0c3bccc57604)
+        ;
+
+        
+    
+    
+            var circle_marker_64b5fd42a74baeab76c1cf714327d06a = L.circleMarker(
+                [48.8557611, 36.5445795],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_5181337139fb05a8691d3d36428ec04c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c053ac356f5aca5990aa09d1d946c0ac = $(`<div id="html_c053ac356f5aca5990aa09d1d946c0ac" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (смт Близнюки, вул. Калинова, 3)</div>`)[0];
+                popup_5181337139fb05a8691d3d36428ec04c.setContent(html_c053ac356f5aca5990aa09d1d946c0ac);
+            
+        
+
+        circle_marker_64b5fd42a74baeab76c1cf714327d06a.bindPopup(popup_5181337139fb05a8691d3d36428ec04c)
+        ;
+
+        
+    
+    
+            var circle_marker_d0dcd2215dc49778ef9f0945d80707ec = L.circleMarker(
+                [50.1599176, 35.4763896],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_8b9d27d31426989d392fdbb5b2b0f862 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0f809f2ee89ba5bcf73ac4e9c527e186 = $(`<div id="html_0f809f2ee89ba5bcf73ac4e9c527e186" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Богодухів, вул. Комарова, 3)</div>`)[0];
+                popup_8b9d27d31426989d392fdbb5b2b0f862.setContent(html_0f809f2ee89ba5bcf73ac4e9c527e186);
+            
+        
+
+        circle_marker_d0dcd2215dc49778ef9f0945d80707ec.bindPopup(popup_8b9d27d31426989d392fdbb5b2b0f862)
+        ;
+
+        
+    
+    
+            var circle_marker_ae99a4ba7bd3fed5176aa6948eb28b87 = L.circleMarker(
+                [50.0620325, 35.15822259999999],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_3c70058b5253c5f83851022d7ecc8b92 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a4d28fdde1bc013715b4f040ec4f361 = $(`<div id="html_7a4d28fdde1bc013715b4f040ec4f361" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Краснокутськ, вул. Миру, буд. 13-6)</div>`)[0];
+                popup_3c70058b5253c5f83851022d7ecc8b92.setContent(html_7a4d28fdde1bc013715b4f040ec4f361);
+            
+        
+
+        circle_marker_ae99a4ba7bd3fed5176aa6948eb28b87.bindPopup(popup_3c70058b5253c5f83851022d7ecc8b92)
+        ;
+
+        
+    
+    
+            var circle_marker_c3fefb8c95a2785a22af5d68995f5607 = L.circleMarker(
+                [49.8396802, 35.29589989999999],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_f246df950697b7272911e2b1d6be32d5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_998759c765ebea0d268581b54d64d9b5 = $(`<div id="html_998759c765ebea0d268581b54d64d9b5" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Коломак, вул. Гетьмана Івана Мазепи, 9)</div>`)[0];
+                popup_f246df950697b7272911e2b1d6be32d5.setContent(html_998759c765ebea0d268581b54d64d9b5);
+            
+        
+
+        circle_marker_c3fefb8c95a2785a22af5d68995f5607.bindPopup(popup_f246df950697b7272911e2b1d6be32d5)
+        ;
+
+        
+    
+    
+            var circle_marker_ec8d88e5ad84aa3d88e7b5fe31b58b43 = L.circleMarker(
+                [49.95335960000001, 35.9380932],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_a2f5bc447235cf07d8aab8b21795f67b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ba8ecb85901c72d5d053b934694ddbbd = $(`<div id="html_ba8ecb85901c72d5d053b934694ddbbd" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (м. Люботин, вул. Громова, 3)</div>`)[0];
+                popup_a2f5bc447235cf07d8aab8b21795f67b.setContent(html_ba8ecb85901c72d5d053b934694ddbbd);
+            
+        
+
+        circle_marker_ec8d88e5ad84aa3d88e7b5fe31b58b43.bindPopup(popup_a2f5bc447235cf07d8aab8b21795f67b)
+        ;
+
+        
+    
+    
+            var circle_marker_5c3c31b82dacd05adf08010c55350414 = L.circleMarker(
+                [50.2935475, 36.9306293],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_ef865d996584054d474bd8f15f060c2c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ca79c11839d631039c7c010391086fb8 = $(`<div id="html_ca79c11839d631039c7c010391086fb8" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Вовчанськ, вул. 1-го Травня, 7)</div>`)[0];
+                popup_ef865d996584054d474bd8f15f060c2c.setContent(html_ca79c11839d631039c7c010391086fb8);
+            
+        
+
+        circle_marker_5c3c31b82dacd05adf08010c55350414.bindPopup(popup_ef865d996584054d474bd8f15f060c2c)
+        ;
+
+        
+    
+    
+            var circle_marker_d589d21373a8679a714fde086c48b59b = L.circleMarker(
+                [50.1050211, 36.1050539],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_71824600dd01523144dc24e54d0ce9b0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5603f4b50c0291b99f60319c37b1659d = $(`<div id="html_5603f4b50c0291b99f60319c37b1659d" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Дергачі, вул. 1 Травня, 23)</div>`)[0];
+                popup_71824600dd01523144dc24e54d0ce9b0.setContent(html_5603f4b50c0291b99f60319c37b1659d);
+            
+        
+
+        circle_marker_d589d21373a8679a714fde086c48b59b.bindPopup(popup_71824600dd01523144dc24e54d0ce9b0)
+        ;
+
+        
+    
+    
+            var circle_marker_9c5b1a9d5c04a0ba9582095e22c8230a = L.circleMarker(
+                [50.2688043, 35.9813693],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_d65e64e9d305ada665514fe2aea67f69 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_40ef474d7981e8f86faad0fc42512495 = $(`<div id="html_40ef474d7981e8f86faad0fc42512495" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Золочів, вул. Філатова, 20)</div>`)[0];
+                popup_d65e64e9d305ada665514fe2aea67f69.setContent(html_40ef474d7981e8f86faad0fc42512495);
+            
+        
+
+        circle_marker_9c5b1a9d5c04a0ba9582095e22c8230a.bindPopup(popup_d65e64e9d305ada665514fe2aea67f69)
+        ;
+
+        
+    
+    
+            var circle_marker_60169d85e5d4c8152eec6733b71db2b2 = L.circleMarker(
+                [49.6793365, 36.3330268],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_4b274f3269579a4527f843e214dc4f9a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_26f3adaa0136ec912f28e748ae64a0ab = $(`<div id="html_26f3adaa0136ec912f28e748ae64a0ab" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Зміїв, Таранівське шосе, 1-б)</div>`)[0];
+                popup_4b274f3269579a4527f843e214dc4f9a.setContent(html_26f3adaa0136ec912f28e748ae64a0ab);
+            
+        
+
+        circle_marker_60169d85e5d4c8152eec6733b71db2b2.bindPopup(popup_4b274f3269579a4527f843e214dc4f9a)
+        ;
+
+        
+    
+    
+            var circle_marker_be28b15e54a5204ca6e971fc680b2c30 = L.circleMarker(
+                [49.1880848, 37.274133],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_52c66b8cd047490cfa4a6e4b4347dfa6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7e6e053fb69e9821c76b5e2f89a3c94f = $(`<div id="html_7e6e053fb69e9821c76b5e2f89a3c94f" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Ізюм, пров. Залікарняний, 2)</div>`)[0];
+                popup_52c66b8cd047490cfa4a6e4b4347dfa6.setContent(html_7e6e053fb69e9821c76b5e2f89a3c94f);
+            
+        
+
+        circle_marker_be28b15e54a5204ca6e971fc680b2c30.bindPopup(popup_52c66b8cd047490cfa4a6e4b4347dfa6)
+        ;
+
+        
+    
+    
+            var circle_marker_9bc6e87b046215ff9ab82bdf409bb3b8 = L.circleMarker(
+                [48.9208254, 37.0257025],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_96fc5699b63512623602618314bc66c0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d3f89e8289940418037743404f616ca6 = $(`<div id="html_d3f89e8289940418037743404f616ca6" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (м. Барвінкове, вул. Незалежності, 20)</div>`)[0];
+                popup_96fc5699b63512623602618314bc66c0.setContent(html_d3f89e8289940418037743404f616ca6);
+            
+        
+
+        circle_marker_9bc6e87b046215ff9ab82bdf409bb3b8.bindPopup(popup_96fc5699b63512623602618314bc66c0)
+        ;
+
+        
+    
+    
+            var circle_marker_af168efb1ab4a59916ffc523e1e035ef = L.circleMarker(
+                [49.3742511, 37.623014],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_38da3bf99422ec5c3d4e6952de6458eb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_45028af3fc03228ab80483e06dbe1290 = $(`<div id="html_45028af3fc03228ab80483e06dbe1290" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Борова, вул. Миру, 34)</div>`)[0];
+                popup_38da3bf99422ec5c3d4e6952de6458eb.setContent(html_45028af3fc03228ab80483e06dbe1290);
+            
+        
+
+        circle_marker_af168efb1ab4a59916ffc523e1e035ef.bindPopup(popup_38da3bf99422ec5c3d4e6952de6458eb)
+        ;
+
+        
+    
+    
+            var circle_marker_6a51b087fe44706ec58aae179ff31eb0 = L.circleMarker(
+                [49.37304899999999, 35.461353],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_d242d6e6bc8cf1cfcddff815949160c2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e5528c267ce4109ee21cb2b04507964e = $(`<div id="html_e5528c267ce4109ee21cb2b04507964e" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Красноград, вул. Шиндлера, 87)</div>`)[0];
+                popup_d242d6e6bc8cf1cfcddff815949160c2.setContent(html_e5528c267ce4109ee21cb2b04507964e);
+            
+        
+
+        circle_marker_6a51b087fe44706ec58aae179ff31eb0.bindPopup(popup_d242d6e6bc8cf1cfcddff815949160c2)
+        ;
+
+        
+    
+    
+            var circle_marker_157a7ce4085c0de2592d95d4ce6967ce = L.circleMarker(
+                [48.94192839999999, 34.4868421],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_5ad15799a593dbd50abe2a21c076eaf4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_eefc4ad7baa0ea5eca85e9ab4138fe39 = $(`<div id="html_eefc4ad7baa0ea5eca85e9ab4138fe39" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Зачипилівка, вул. 14-ї Гвардійської дивізії, 6)</div>`)[0];
+                popup_5ad15799a593dbd50abe2a21c076eaf4.setContent(html_eefc4ad7baa0ea5eca85e9ab4138fe39);
+            
+        
+
+        circle_marker_157a7ce4085c0de2592d95d4ce6967ce.bindPopup(popup_5ad15799a593dbd50abe2a21c076eaf4)
+        ;
+
+        
+    
+    
+            var circle_marker_f476eba58a3f5dde7e8f39482da92c8a = L.circleMarker(
+                [49.2874969, 35.7592895],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_7066c3ff665a67f45bcf42365721f0e4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5a41d1dba60f1c7aa93a5afb2a6da13e = $(`<div id="html_5a41d1dba60f1c7aa93a5afb2a6da13e" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт. Кегічівка, вул. Калинова, 37)</div>`)[0];
+                popup_7066c3ff665a67f45bcf42365721f0e4.setContent(html_5a41d1dba60f1c7aa93a5afb2a6da13e);
+            
+        
+
+        circle_marker_f476eba58a3f5dde7e8f39482da92c8a.bindPopup(popup_7066c3ff665a67f45bcf42365721f0e4)
+        ;
+
+        
+    
+    
+            var circle_marker_198c6bc514824faca9980896a04e33de = L.circleMarker(
+                [49.1519944, 35.8771294],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_c3a0f17939a8944e329c60f42cfcde60 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_90fdfb22333950b0266950f30dbad277 = $(`<div id="html_90fdfb22333950b0266950f30dbad277" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Сахновщина, вул. Полтавська, 75)</div>`)[0];
+                popup_c3a0f17939a8944e329c60f42cfcde60.setContent(html_90fdfb22333950b0266950f30dbad277);
+            
+        
+
+        circle_marker_198c6bc514824faca9980896a04e33de.bindPopup(popup_c3a0f17939a8944e329c60f42cfcde60)
+        ;
+
+        
+    
+    
+            var circle_marker_3fd578c91c4e9ce0db73736ab7dde67a = L.circleMarker(
+                [49.7219545, 37.6074409],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_f09249caa6be957bd9b260cb74a7e863 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0addab061c16a2614493537399919442 = $(`<div id="html_0addab061c16a2614493537399919442" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Куп’янськ, вул. Спортивна, 11)</div>`)[0];
+                popup_f09249caa6be957bd9b260cb74a7e863.setContent(html_0addab061c16a2614493537399919442);
+            
+        
+
+        circle_marker_3fd578c91c4e9ce0db73736ab7dde67a.bindPopup(popup_f09249caa6be957bd9b260cb74a7e863)
+        ;
+
+        
+    
+    
+            var circle_marker_7e45804a93d8a71367c9fdb3e0a34a9e = L.circleMarker(
+                [49.8430618, 37.6799122],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_5a9d1d904bc920946cd75ad8d365abca = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9cd18b158f776a64143fec92237fba3e = $(`<div id="html_9cd18b158f776a64143fec92237fba3e" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Дворічне, вул. Мельнична, 10-А)</div>`)[0];
+                popup_5a9d1d904bc920946cd75ad8d365abca.setContent(html_9cd18b158f776a64143fec92237fba3e);
+            
+        
+
+        circle_marker_7e45804a93d8a71367c9fdb3e0a34a9e.bindPopup(popup_5a9d1d904bc920946cd75ad8d365abca)
+        ;
+
+        
+    
+    
+            var circle_marker_6b4d5eab78337145b20b536a43fb1cbf = L.circleMarker(
+                [48.8943687, 36.2795248],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_fbf682e796fb99cf1ff8b485cbae835e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e43116046772ae5f759d4f074c0e160a = $(`<div id="html_e43116046772ae5f759d4f074c0e160a" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Лозова, вул. Свободи, 24/14)</div>`)[0];
+                popup_fbf682e796fb99cf1ff8b485cbae835e.setContent(html_e43116046772ae5f759d4f074c0e160a);
+            
+        
+
+        circle_marker_6b4d5eab78337145b20b536a43fb1cbf.bindPopup(popup_fbf682e796fb99cf1ff8b485cbae835e)
+        ;
+
+        
+    
+    
+            var circle_marker_395e987c36a769648c961bf06453e609 = L.circleMarker(
+                [49.717584, 35.8589913],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_25343f3576c027430549b55e0ea284e8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2f16bdb3dcde5b6cea868b8a94b475f3 = $(`<div id="html_2f16bdb3dcde5b6cea868b8a94b475f3" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (смт Н. Водолага, вул. Кооперативна, 6)</div>`)[0];
+                popup_25343f3576c027430549b55e0ea284e8.setContent(html_2f16bdb3dcde5b6cea868b8a94b475f3);
+            
+        
+
+        circle_marker_395e987c36a769648c961bf06453e609.bindPopup(popup_25343f3576c027430549b55e0ea284e8)
+        ;
+
+        
+    
+    
+            var circle_marker_c23dd74bcb56f997166438e63ae086f1 = L.circleMarker(
+                [49.39854, 36.2251286],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_d129cded990a2567dfb7116ca6a6ab1d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d9438e6af99e618e4f61fe966779f7ae = $(`<div id="html_d9438e6af99e618e4f61fe966779f7ae" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Первомайський, вул. Світанкова, 3)</div>`)[0];
+                popup_d129cded990a2567dfb7116ca6a6ab1d.setContent(html_d9438e6af99e618e4f61fe966779f7ae);
+            
+        
+
+        circle_marker_c23dd74bcb56f997166438e63ae086f1.bindPopup(popup_d129cded990a2567dfb7116ca6a6ab1d)
+        ;
+
+        
+    
+    
+            var circle_marker_a58eb9e0de0630349f34c7ec0cea1a58 = L.circleMarker(
+                [49.8330406, 36.695966],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_c4a876025095c4672f02d19a6f7a748e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dc0d98e2badebfcbd3d93a00dbd4dd61 = $(`<div id="html_dc0d98e2badebfcbd3d93a00dbd4dd61" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (м. Чугуїв, вул. Гвардійська, 41)</div>`)[0];
+                popup_c4a876025095c4672f02d19a6f7a748e.setContent(html_dc0d98e2badebfcbd3d93a00dbd4dd61);
+            
+        
+
+        circle_marker_a58eb9e0de0630349f34c7ec0cea1a58.bindPopup(popup_c4a876025095c4672f02d19a6f7a748e)
+        ;
+
+        
+    
+    
+            var circle_marker_2d6d4162927489bd3ea5af6961dc9765 = L.circleMarker(
+                [49.8655441, 36.9374296],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_6f00ea0bf1a44afaa1e24b4c1cba6c5e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7248cfedf21aacc856249dddae0aec14 = $(`<div id="html_7248cfedf21aacc856249dddae0aec14" style="width: 100.0%; height: 100.0%;">EMS: Пункт базування (смт Печеніги, вул. Незалежності, 52)</div>`)[0];
+                popup_6f00ea0bf1a44afaa1e24b4c1cba6c5e.setContent(html_7248cfedf21aacc856249dddae0aec14);
+            
+        
+
+        circle_marker_2d6d4162927489bd3ea5af6961dc9765.bindPopup(popup_6f00ea0bf1a44afaa1e24b4c1cba6c5e)
+        ;
+
+        
+    
+    
+            var circle_marker_a7576cc0283842daec76cc30272ede19 = L.circleMarker(
+                [49.9166765, 36.1763412],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_80934346134830a9820af4ea78b37351);
+        
+    
+        var popup_58e3944e75d87634dcffdf5733ae0d43 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e13017faa4d4aa5362de0b8dae65ce4a = $(`<div id="html_e13017faa4d4aa5362de0b8dae65ce4a" style="width: 100.0%; height: 100.0%;">EMS: Підстанція (Харківський р-н, смт. Покотилівка, вул. Сковороди, 2)</div>`)[0];
+                popup_58e3944e75d87634dcffdf5733ae0d43.setContent(html_e13017faa4d4aa5362de0b8dae65ce4a);
+            
+        
+
+        circle_marker_a7576cc0283842daec76cc30272ede19.bindPopup(popup_58e3944e75d87634dcffdf5733ae0d43)
+        ;
+
+        
+    
+</script>
+</html>
