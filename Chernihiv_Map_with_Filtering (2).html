@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_993698e1b8b7763987904cef09f45378 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed;
+            bottom: 50px; left: 50px; width: 220px; height: 300px;
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; padding: 10px;">
+<h4>Legend</h4>
+<b>Госпітальний етап</b><br>
+<i style="background:darkblue; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Надкластерний ЗОЗ<br>
+<i style="background:blue; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Кластерний ЗОЗ<br>
+<i style="background:lightblue; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Загальний ЗОЗ<br>
+<br>
+<b>Догоспітальний етап</b><br>
+<i style="background:darkred; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> ЦЕМД<br>
+<i style="background:red; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Станція<br>
+<i style="background:orange; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Підстанція<br>
+<i style="background:yellow; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Пункт базування<br>
+<i style="background:green; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> ОДС<br>
+</div>
+    
+            <div class="folium-map" id="map_993698e1b8b7763987904cef09f45378" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_993698e1b8b7763987904cef09f45378 = L.map(
+                "map_993698e1b8b7763987904cef09f45378",
+                {
+                    center: [51.4399315, 32.0074135],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5d925724ef85c9ae7cde5f34be70c1c4 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5d925724ef85c9ae7cde5f34be70c1c4.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_cc5a2ca4d57826854ad4ed4bf024d65c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_c7931f9d6d4c2f68f6c644d76f5eb486 = L.marker(
+                [51.5256469, 31.2791608],
+                {
+}
+            ).addTo(feature_group_cc5a2ca4d57826854ad4ed4bf024d65c);
+        
+    
+            var icon_edb0f354316192d94ae88946dbe37c46 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_c7931f9d6d4c2f68f6c644d76f5eb486.setIcon(icon_edb0f354316192d94ae88946dbe37c46);
+        
+    
+        var popup_a7076655fbb02a9f92192634ab34edf5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b0c9d2fd3cce97a1618a0281ca1675be = $(`<div id="html_b0c9d2fd3cce97a1618a0281ca1675be" style="width: 100.0%; height: 100.0%;">КНП «Чернігівська обласна лікарня» Чернігівської обласної ради. (Надкластерний ЗОЗ)</div>`)[0];
+                popup_a7076655fbb02a9f92192634ab34edf5.setContent(html_b0c9d2fd3cce97a1618a0281ca1675be);
+            
+        
+
+        marker_c7931f9d6d4c2f68f6c644d76f5eb486.bindPopup(popup_a7076655fbb02a9f92192634ab34edf5)
+        ;
+
+        
+    
+    
+            var marker_bc4d881a8feb0a628ef1f57fb6b72617 = L.marker(
+                [51.4979855, 31.2799633],
+                {
+}
+            ).addTo(feature_group_cc5a2ca4d57826854ad4ed4bf024d65c);
+        
+    
+            var icon_fca7c31af15abea98716736173ecd9ba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_bc4d881a8feb0a628ef1f57fb6b72617.setIcon(icon_fca7c31af15abea98716736173ecd9ba);
+        
+    
+        var popup_a09147b04df3567bf0c454a7c69a60e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4df66d03fe353c5e132ed473fd95e719 = $(`<div id="html_4df66d03fe353c5e132ed473fd95e719" style="width: 100.0%; height: 100.0%;">КНП «Чернігівська обласна дитяча лікарня» Чернігівської обласної ради. (Надкластерний ЗОЗ)</div>`)[0];
+                popup_a09147b04df3567bf0c454a7c69a60e8.setContent(html_4df66d03fe353c5e132ed473fd95e719);
+            
+        
+
+        marker_bc4d881a8feb0a628ef1f57fb6b72617.bindPopup(popup_a09147b04df3567bf0c454a7c69a60e8)
+        ;
+
+        
+    
+    
+            var marker_8cac8a6dc36156e9decd0223c8f2c540 = L.marker(
+                [51.5177024, 31.2753987],
+                {
+}
+            ).addTo(feature_group_cc5a2ca4d57826854ad4ed4bf024d65c);
+        
+    
+            var icon_022308998f72acadd7e2d6215019ff6d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8cac8a6dc36156e9decd0223c8f2c540.setIcon(icon_022308998f72acadd7e2d6215019ff6d);
+        
+    
+        var popup_8ce6bce84615653d38da2483ef186fca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61616a0d0e1e9a8f53eb0d3bd4995b8a = $(`<div id="html_61616a0d0e1e9a8f53eb0d3bd4995b8a" style="width: 100.0%; height: 100.0%;">КНП «Чернігівський медичний центр сучасної онкології» Чернігівської обласної ради. (Надкластерний ЗОЗ)</div>`)[0];
+                popup_8ce6bce84615653d38da2483ef186fca.setContent(html_61616a0d0e1e9a8f53eb0d3bd4995b8a);
+            
+        
+
+        marker_8cac8a6dc36156e9decd0223c8f2c540.bindPopup(popup_8ce6bce84615653d38da2483ef186fca)
+        ;
+
+        
+    
+    
+            var marker_43b2cec4550d43745a8cdab976ec28cc = L.marker(
+                [51.4828588, 31.2724228],
+                {
+}
+            ).addTo(feature_group_cc5a2ca4d57826854ad4ed4bf024d65c);
+        
+    
+            var icon_06f7d3539f8099e57ca56584fa5a3f27 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_43b2cec4550d43745a8cdab976ec28cc.setIcon(icon_06f7d3539f8099e57ca56584fa5a3f27);
+        
+    
+        var popup_7a5653163029fb26e834d501787bb55f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_daa62cf6f40445a7bad1aa7db29d7c46 = $(`<div id="html_daa62cf6f40445a7bad1aa7db29d7c46" style="width: 100.0%; height: 100.0%;">КНП «Чернігівська обласна психоневрологічна лікарня» Чернігівської обласної ради. (Надкластерний ЗОЗ)</div>`)[0];
+                popup_7a5653163029fb26e834d501787bb55f.setContent(html_daa62cf6f40445a7bad1aa7db29d7c46);
+            
+        
+
+        marker_43b2cec4550d43745a8cdab976ec28cc.bindPopup(popup_7a5653163029fb26e834d501787bb55f)
+        ;
+
+        
+    
+    
+            var marker_bd3fdbeef7fe75f514caf80c780dbd91 = L.marker(
+                [51.5187343, 31.3088437],
+                {
+}
+            ).addTo(feature_group_cc5a2ca4d57826854ad4ed4bf024d65c);
+        
+    
+            var icon_c689612a1d83e518925bd671e1d5e09c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_bd3fdbeef7fe75f514caf80c780dbd91.setIcon(icon_c689612a1d83e518925bd671e1d5e09c);
+        
+    
+        var popup_9c0fa58679ada3ab9b59996af1fe51f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0827e89a35fe54383307d67fb11cfd96 = $(`<div id="html_0827e89a35fe54383307d67fb11cfd96" style="width: 100.0%; height: 100.0%;">КНП «Пологовий будинок» Чернігівської міської ради (перинатальний центр ІІІ-го рівня) (Надкластерний ЗОЗ)</div>`)[0];
+                popup_9c0fa58679ada3ab9b59996af1fe51f9.setContent(html_0827e89a35fe54383307d67fb11cfd96);
+            
+        
+
+        marker_bd3fdbeef7fe75f514caf80c780dbd91.bindPopup(popup_9c0fa58679ada3ab9b59996af1fe51f9)
+        ;
+
+        
+    
+    
+            feature_group_cc5a2ca4d57826854ad4ed4bf024d65c.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_d5d1ffbe5935fce1424437a60f4992ed = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_5ebe5ff70ceba148969bfa7c4c7dd8d8 = L.marker(
+                [51.522453, 31.3125089],
+                {
+}
+            ).addTo(feature_group_d5d1ffbe5935fce1424437a60f4992ed);
+        
+    
+            var icon_e0e5c11fe4ec7bffbdc68212e2e5ee2b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5ebe5ff70ceba148969bfa7c4c7dd8d8.setIcon(icon_e0e5c11fe4ec7bffbdc68212e2e5ee2b);
+        
+    
+        var popup_e6af282b3ae6b8ca17cd75e5c22a9457 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_976e46017ba0610db9b68b8d211ed8ae = $(`<div id="html_976e46017ba0610db9b68b8d211ed8ae" style="width: 100.0%; height: 100.0%;">КНП «Чернігівська міська лікарня №2» Чернігівської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_e6af282b3ae6b8ca17cd75e5c22a9457.setContent(html_976e46017ba0610db9b68b8d211ed8ae);
+            
+        
+
+        marker_5ebe5ff70ceba148969bfa7c4c7dd8d8.bindPopup(popup_e6af282b3ae6b8ca17cd75e5c22a9457)
+        ;
+
+        
+    
+    
+            var marker_5ca050063223aa9711c79a08a8cdd399 = L.marker(
+                [51.4982, 31.28935],
+                {
+}
+            ).addTo(feature_group_d5d1ffbe5935fce1424437a60f4992ed);
+        
+    
+            var icon_df01bd2d7729dbf7a20c2fb269f3293d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5ca050063223aa9711c79a08a8cdd399.setIcon(icon_df01bd2d7729dbf7a20c2fb269f3293d);
+        
+    
+        var popup_64af4f124dc7891317ef7cfc43cf08ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4bfd758fa9885fa074bbe3e827ed64f3 = $(`<div id="html_4bfd758fa9885fa074bbe3e827ed64f3" style="width: 100.0%; height: 100.0%;">КНП «Чернігівська центральна районна лікарня» Чернігівської районної ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_64af4f124dc7891317ef7cfc43cf08ab.setContent(html_4bfd758fa9885fa074bbe3e827ed64f3);
+            
+        
+
+        marker_5ca050063223aa9711c79a08a8cdd399.bindPopup(popup_64af4f124dc7891317ef7cfc43cf08ab)
+        ;
+
+        
+    
+    
+            var marker_27ea0f3e3efda401af8015b5b22c7643 = L.marker(
+                [51.7795712, 32.2435253],
+                {
+}
+            ).addTo(feature_group_d5d1ffbe5935fce1424437a60f4992ed);
+        
+    
+            var icon_9e2aa832e2c5b59074ca14b66fe31db0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_27ea0f3e3efda401af8015b5b22c7643.setIcon(icon_9e2aa832e2c5b59074ca14b66fe31db0);
+        
+    
+        var popup_05166c8b253a6b1fedd3201bfcd36f77 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d9fb5b42d59057d4ebb535bfa29e7beb = $(`<div id="html_d9fb5b42d59057d4ebb535bfa29e7beb" style="width: 100.0%; height: 100.0%;">КНП «Корюківська центральна районна лікарня» Корюківської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_05166c8b253a6b1fedd3201bfcd36f77.setContent(html_d9fb5b42d59057d4ebb535bfa29e7beb);
+            
+        
+
+        marker_27ea0f3e3efda401af8015b5b22c7643.bindPopup(popup_05166c8b253a6b1fedd3201bfcd36f77)
+        ;
+
+        
+    
+    
+            var marker_b1f58828644dbade9ba0ebe3c69ee4b0 = L.marker(
+                [51.9925437, 33.2674596],
+                {
+}
+            ).addTo(feature_group_d5d1ffbe5935fce1424437a60f4992ed);
+        
+    
+            var icon_d6498c50f922f6757d1e99c1d8e846ae = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b1f58828644dbade9ba0ebe3c69ee4b0.setIcon(icon_d6498c50f922f6757d1e99c1d8e846ae);
+        
+    
+        var popup_280ceec0c3e37290681518b0803bb00a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0640fa145473ba0d7724130bd3a57f7e = $(`<div id="html_0640fa145473ba0d7724130bd3a57f7e" style="width: 100.0%; height: 100.0%;">КНП «Новгород-Сіверська центральна міська лікарня ім. І.В. Буяльського» Новгород-Сіверської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_280ceec0c3e37290681518b0803bb00a.setContent(html_0640fa145473ba0d7724130bd3a57f7e);
+            
+        
+
+        marker_b1f58828644dbade9ba0ebe3c69ee4b0.bindPopup(popup_280ceec0c3e37290681518b0803bb00a)
+        ;
+
+        
+    
+    
+            var marker_9b05762c1ded20ebedc4210c28f1894f = L.marker(
+                [50.5938534, 32.3926086],
+                {
+}
+            ).addTo(feature_group_d5d1ffbe5935fce1424437a60f4992ed);
+        
+    
+            var icon_339ee492016bce1361d5c33e8ebe407f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_9b05762c1ded20ebedc4210c28f1894f.setIcon(icon_339ee492016bce1361d5c33e8ebe407f);
+        
+    
+        var popup_d725a4d17fb388c365ed3570ad35c564 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_38ad480460381630f12d4b53d47c7400 = $(`<div id="html_38ad480460381630f12d4b53d47c7400" style="width: 100.0%; height: 100.0%;">КНП «Прилуцька центральна міська лікарня» (Кластерний ЗОЗ)</div>`)[0];
+                popup_d725a4d17fb388c365ed3570ad35c564.setContent(html_38ad480460381630f12d4b53d47c7400);
+            
+        
+
+        marker_9b05762c1ded20ebedc4210c28f1894f.bindPopup(popup_d725a4d17fb388c365ed3570ad35c564)
+        ;
+
+        
+    
+    
+            var marker_fade61b4f1c55fad3c12269bef6b9c52 = L.marker(
+                [51.0377956, 31.8880995],
+                {
+}
+            ).addTo(feature_group_d5d1ffbe5935fce1424437a60f4992ed);
+        
+    
+            var icon_d430e2ebb972a5c46c31606a26c71b30 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_fade61b4f1c55fad3c12269bef6b9c52.setIcon(icon_d430e2ebb972a5c46c31606a26c71b30);
+        
+    
+        var popup_a4c01455ee1a93a9c9209628451b6f3d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3069fa2d0e3873832ad705019bcaae52 = $(`<div id="html_3069fa2d0e3873832ad705019bcaae52" style="width: 100.0%; height: 100.0%;">КНП «Ніжинська центральна міська лікарня ім. М. Галицького» Ніжинської міської ради (Кластерний ЗОЗ)</div>`)[0];
+                popup_a4c01455ee1a93a9c9209628451b6f3d.setContent(html_3069fa2d0e3873832ad705019bcaae52);
+            
+        
+
+        marker_fade61b4f1c55fad3c12269bef6b9c52.bindPopup(popup_a4c01455ee1a93a9c9209628451b6f3d)
+        ;
+
+        
+    
+    
+            feature_group_d5d1ffbe5935fce1424437a60f4992ed.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_137640b2d2114b2471ab4bdb52053f8c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_67887ba92afe64992cca06d3c5cb30c1 = L.marker(
+                [51.522453, 31.3125089],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_fc458754bd79c5469edff1fc2ae71145 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_67887ba92afe64992cca06d3c5cb30c1.setIcon(icon_fc458754bd79c5469edff1fc2ae71145);
+        
+    
+        var popup_fffb735209be56e7cc7c54bb04d0aa65 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f5d24a96bcb14fb775f92356a6b154f = $(`<div id="html_8f5d24a96bcb14fb775f92356a6b154f" style="width: 100.0%; height: 100.0%;">КНП «Чернігівська міська лікарня №3» Чернігівської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_fffb735209be56e7cc7c54bb04d0aa65.setContent(html_8f5d24a96bcb14fb775f92356a6b154f);
+            
+        
+
+        marker_67887ba92afe64992cca06d3c5cb30c1.bindPopup(popup_fffb735209be56e7cc7c54bb04d0aa65)
+        ;
+
+        
+    
+    
+            var marker_8a0b780d911c8cfb5c3c0bacd3ae8d40 = L.marker(
+                [51.4982, 31.28935],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_6d4b1e6a08a214432747bbd3eb4ddfcb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8a0b780d911c8cfb5c3c0bacd3ae8d40.setIcon(icon_6d4b1e6a08a214432747bbd3eb4ddfcb);
+        
+    
+        var popup_33f42fe6afc9a307a2f69945910c80c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d1c78a19c8511a3c1f905c22c8f05c2f = $(`<div id="html_d1c78a19c8511a3c1f905c22c8f05c2f" style="width: 100.0%; height: 100.0%;">КНП «Козелецька лікарня інтенсивного лікування» Козелецької селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_33f42fe6afc9a307a2f69945910c80c1.setContent(html_d1c78a19c8511a3c1f905c22c8f05c2f);
+            
+        
+
+        marker_8a0b780d911c8cfb5c3c0bacd3ae8d40.bindPopup(popup_33f42fe6afc9a307a2f69945910c80c1)
+        ;
+
+        
+    
+    
+            var marker_364e7a19396024d3d9827e4a7fd119a5 = L.marker(
+                [51.794858, 31.0820098],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_98d3a4ebfb840cb7ff89c76aa87dcb4b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_364e7a19396024d3d9827e4a7fd119a5.setIcon(icon_98d3a4ebfb840cb7ff89c76aa87dcb4b);
+        
+    
+        var popup_dd8e4f6a10f3d120c7dd47253610aba7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b66f4fed7fd8f6ef306d002fe37e3d9 = $(`<div id="html_3b66f4fed7fd8f6ef306d002fe37e3d9" style="width: 100.0%; height: 100.0%;">КНП «Ріпкинська центральна лікарня» Ріпкинської селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_dd8e4f6a10f3d120c7dd47253610aba7.setContent(html_3b66f4fed7fd8f6ef306d002fe37e3d9);
+            
+        
+
+        marker_364e7a19396024d3d9827e4a7fd119a5.bindPopup(popup_dd8e4f6a10f3d120c7dd47253610aba7)
+        ;
+
+        
+    
+    
+            var marker_3dde0ef20007f61b55e5d7ad0a6e0042 = L.marker(
+                [51.8826327, 31.5933964],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_34e2030b2dcb93cf324fbfbb926617d7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3dde0ef20007f61b55e5d7ad0a6e0042.setIcon(icon_34e2030b2dcb93cf324fbfbb926617d7);
+        
+    
+        var popup_f66399140d782cca9cecaf1621e7079a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fe50a8e600eaf0b3896534b0589e76fb = $(`<div id="html_fe50a8e600eaf0b3896534b0589e76fb" style="width: 100.0%; height: 100.0%;">КНП «Городнянська міська лікарня» Городнянської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_f66399140d782cca9cecaf1621e7079a.setContent(html_fe50a8e600eaf0b3896534b0589e76fb);
+            
+        
+
+        marker_3dde0ef20007f61b55e5d7ad0a6e0042.bindPopup(popup_f66399140d782cca9cecaf1621e7079a)
+        ;
+
+        
+    
+    
+            var marker_8b96b889892defe9f81d198cb18bda87 = L.marker(
+                [51.5287284, 32.2251361],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_145cc8be855d22a70788adab0e855f2a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_8b96b889892defe9f81d198cb18bda87.setIcon(icon_145cc8be855d22a70788adab0e855f2a);
+        
+    
+        var popup_ca51ea60ea8e6733e414774bf9168c7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_30825632a4ef7f9f280daa9937ae741c = $(`<div id="html_30825632a4ef7f9f280daa9937ae741c" style="width: 100.0%; height: 100.0%;">КНП «Менська  міська лікарня» Менської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_ca51ea60ea8e6733e414774bf9168c7c.setContent(html_30825632a4ef7f9f280daa9937ae741c);
+            
+        
+
+        marker_8b96b889892defe9f81d198cb18bda87.bindPopup(popup_ca51ea60ea8e6733e414774bf9168c7c)
+        ;
+
+        
+    
+    
+            var marker_723bdead3d2f49fa1e40925f30383848 = L.marker(
+                [51.8156925, 31.9533328],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_2bd760c66e69b227eb0c22f98f4b2eac = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_723bdead3d2f49fa1e40925f30383848.setIcon(icon_2bd760c66e69b227eb0c22f98f4b2eac);
+        
+    
+        var popup_0e4f31759e2af98755952f28554d3d45 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_042977198643927027e5646dfc0132b2 = $(`<div id="html_042977198643927027e5646dfc0132b2" style="width: 100.0%; height: 100.0%;">КНП «Сновська центральна районна лікарня» Сновської міської ради Сновського району Чернігівської області (Загальний ЗОЗ)</div>`)[0];
+                popup_0e4f31759e2af98755952f28554d3d45.setContent(html_042977198643927027e5646dfc0132b2);
+            
+        
+
+        marker_723bdead3d2f49fa1e40925f30383848.bindPopup(popup_0e4f31759e2af98755952f28554d3d45)
+        ;
+
+        
+    
+    
+            var marker_b628b989fe14dee9a976691bd63c70ca = L.marker(
+                [52.1814619, 32.5839939],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_d993fc8163c95823c08517919f260cbd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b628b989fe14dee9a976691bd63c70ca.setIcon(icon_d993fc8163c95823c08517919f260cbd);
+        
+    
+        var popup_3bf6c9ab8f5caeb026369419d9f66c2e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47a5368e3c86f180a1408e283654bcb6 = $(`<div id="html_47a5368e3c86f180a1408e283654bcb6" style="width: 100.0%; height: 100.0%;">КНП «Семенівська міська лікарня» Семенівської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_3bf6c9ab8f5caeb026369419d9f66c2e.setContent(html_47a5368e3c86f180a1408e283654bcb6);
+            
+        
+
+        marker_b628b989fe14dee9a976691bd63c70ca.bindPopup(popup_3bf6c9ab8f5caeb026369419d9f66c2e)
+        ;
+
+        
+    
+    
+            var marker_5c0efa108ab0740c88d787ee1818f108 = L.marker(
+                [51.5649604, 32.9549585],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_ec6d4dc6645ecddcbf80a6f8bc81f375 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_5c0efa108ab0740c88d787ee1818f108.setIcon(icon_ec6d4dc6645ecddcbf80a6f8bc81f375);
+        
+    
+        var popup_cb254d1133b4e18be21b9e52b378dadd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_adf2100b92bc937ac477788c71d9ac8d = $(`<div id="html_adf2100b92bc937ac477788c71d9ac8d" style="width: 100.0%; height: 100.0%;">КНП «Коропська центральна лікарня» Коропської селищної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_cb254d1133b4e18be21b9e52b378dadd.setContent(html_adf2100b92bc937ac477788c71d9ac8d);
+            
+        
+
+        marker_5c0efa108ab0740c88d787ee1818f108.bindPopup(popup_cb254d1133b4e18be21b9e52b378dadd)
+        ;
+
+        
+    
+    
+            var marker_b1b7a8e2fc6339ddcb0322cdb44a2a6d = L.marker(
+                [50.5938534, 32.3926086],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_b55f2decc0bf8754ab6fbc167ace79d3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_b1b7a8e2fc6339ddcb0322cdb44a2a6d.setIcon(icon_b55f2decc0bf8754ab6fbc167ace79d3);
+        
+    
+        var popup_3d8dcc0717a06585c13c98c26f412567 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ef55d170f76feef78cba76a2757165b = $(`<div id="html_9ef55d170f76feef78cba76a2757165b" style="width: 100.0%; height: 100.0%;">КНП «Прилуцька центральна районна лікарня» Прилуцької районної ради (Загальний ЗОЗ)</div>`)[0];
+                popup_3d8dcc0717a06585c13c98c26f412567.setContent(html_9ef55d170f76feef78cba76a2757165b);
+            
+        
+
+        marker_b1b7a8e2fc6339ddcb0322cdb44a2a6d.bindPopup(popup_3d8dcc0717a06585c13c98c26f412567)
+        ;
+
+        
+    
+    
+            var marker_ca080a6f45e3e646faaab43e14c80a20 = L.marker(
+                [50.8676157, 32.3947503],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_f9d08f14f3b8049f8087be13064a49f1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_ca080a6f45e3e646faaab43e14c80a20.setIcon(icon_f9d08f14f3b8049f8087be13064a49f1);
+        
+    
+        var popup_87070bd6c50cf2272f90560347ed8e54 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00546f2d1cfdf0cba2f0dfaf3d0dd14c = $(`<div id="html_00546f2d1cfdf0cba2f0dfaf3d0dd14c" style="width: 100.0%; height: 100.0%;">КНП «Ічнянська міська лікарня» Ічнянської міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_87070bd6c50cf2272f90560347ed8e54.setContent(html_00546f2d1cfdf0cba2f0dfaf3d0dd14c);
+            
+        
+
+        marker_ca080a6f45e3e646faaab43e14c80a20.bindPopup(popup_87070bd6c50cf2272f90560347ed8e54)
+        ;
+
+        
+    
+    
+            var marker_7433dcb876d84a1b02b84de742ccdd29 = L.marker(
+                [51.1824485, 32.8237482],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_f08cbdcb103f0a6d694ab2c340643397 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_7433dcb876d84a1b02b84de742ccdd29.setIcon(icon_f08cbdcb103f0a6d694ab2c340643397);
+        
+    
+        var popup_437c3c3061e81523f86348c828c0869b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5894afe30c0e6542683ce31986aa4995 = $(`<div id="html_5894afe30c0e6542683ce31986aa4995" style="width: 100.0%; height: 100.0%;">КНП «Бахмацька міська лікарня» Бахмацької міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_437c3c3061e81523f86348c828c0869b.setContent(html_5894afe30c0e6542683ce31986aa4995);
+            
+        
+
+        marker_7433dcb876d84a1b02b84de742ccdd29.bindPopup(popup_437c3c3061e81523f86348c828c0869b)
+        ;
+
+        
+    
+    
+            var marker_3156aa541394b8b69f84592c04b59859 = L.marker(
+                [51.0377956, 31.8880995],
+                {
+}
+            ).addTo(feature_group_137640b2d2114b2471ab4bdb52053f8c);
+        
+    
+            var icon_8180f50cfd67f7e4ced8067b63528757 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "hospital-o",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+            marker_3156aa541394b8b69f84592c04b59859.setIcon(icon_8180f50cfd67f7e4ced8067b63528757);
+        
+    
+        var popup_537377851bac2f9443284b44e3625416 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e0bd9cae0db83b7cb1b4b74ad723ef19 = $(`<div id="html_e0bd9cae0db83b7cb1b4b74ad723ef19" style="width: 100.0%; height: 100.0%;">КНП «Бобровицька опорна лікарня» Бобровицької міської ради (Загальний ЗОЗ)</div>`)[0];
+                popup_537377851bac2f9443284b44e3625416.setContent(html_e0bd9cae0db83b7cb1b4b74ad723ef19);
+            
+        
+
+        marker_3156aa541394b8b69f84592c04b59859.bindPopup(popup_537377851bac2f9443284b44e3625416)
+        ;
+
+        
+    
+    
+            feature_group_137640b2d2114b2471ab4bdb52053f8c.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_59fab04ccd42b38f49d44d1921dad3bd = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_cfb885c42efa93dbd46cfcb13bc8cd97 = L.circleMarker(
+                [51.51235879999999, 31.3487503],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_59fab04ccd42b38f49d44d1921dad3bd);
+        
+    
+        var popup_21ddde4b14b453e4e511c41b5c45b3b3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8ba50509d0cd69405712693022371168 = $(`<div id="html_8ba50509d0cd69405712693022371168" style="width: 100.0%; height: 100.0%;">ЦЕМД (вул. Шевченка, 160, Чернігів, Чернігівська область)</div>`)[0];
+                popup_21ddde4b14b453e4e511c41b5c45b3b3.setContent(html_8ba50509d0cd69405712693022371168);
+            
+        
+
+        circle_marker_cfb885c42efa93dbd46cfcb13bc8cd97.bindPopup(popup_21ddde4b14b453e4e511c41b5c45b3b3)
+        ;
+
+        
+    
+    
+            feature_group_59fab04ccd42b38f49d44d1921dad3bd.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_fc2354b605ccddae4196833aa61f557b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_6c99a14c2a23e54b8b0aa23d32ee7a59 = L.circleMarker(
+                [51.4958327, 31.2939141],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fc2354b605ccddae4196833aa61f557b);
+        
+    
+        var popup_231a0a892261eb4b09869dc983a7703b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3822acf1f15b9fec6250ecae1daf9141 = $(`<div id="html_3822acf1f15b9fec6250ecae1daf9141" style="width: 100.0%; height: 100.0%;">Станція (вул. Чернишевського,3, Чернігів, Чернігівська область)</div>`)[0];
+                popup_231a0a892261eb4b09869dc983a7703b.setContent(html_3822acf1f15b9fec6250ecae1daf9141);
+            
+        
+
+        circle_marker_6c99a14c2a23e54b8b0aa23d32ee7a59.bindPopup(popup_231a0a892261eb4b09869dc983a7703b)
+        ;
+
+        
+    
+    
+            var circle_marker_edab54b685839f94f4e13416c47b4577 = L.circleMarker(
+                [51.7754831, 32.2595792],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fc2354b605ccddae4196833aa61f557b);
+        
+    
+        var popup_aeb2a51721480acbe5bd1872cf99a34c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6f16aa9148b6c8f759ee25a989dcefdf = $(`<div id="html_6f16aa9148b6c8f759ee25a989dcefdf" style="width: 100.0%; height: 100.0%;">Станція (вул. Вокзальна, 9, Корюківка, Чернігівська область)</div>`)[0];
+                popup_aeb2a51721480acbe5bd1872cf99a34c.setContent(html_6f16aa9148b6c8f759ee25a989dcefdf);
+            
+        
+
+        circle_marker_edab54b685839f94f4e13416c47b4577.bindPopup(popup_aeb2a51721480acbe5bd1872cf99a34c)
+        ;
+
+        
+    
+    
+            var circle_marker_d7cd6d733bcd9f8c8945311795ab69e4 = L.circleMarker(
+                [51.0481068, 31.8927523],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fc2354b605ccddae4196833aa61f557b);
+        
+    
+        var popup_af9ce06fe34d61c1df3ae0d08ae16c79 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e7bf86483b6727e4246d365b4bb3f5d9 = $(`<div id="html_e7bf86483b6727e4246d365b4bb3f5d9" style="width: 100.0%; height: 100.0%;">Станція (вул. Покровська, 18, Ніжин, Чернігівська область)</div>`)[0];
+                popup_af9ce06fe34d61c1df3ae0d08ae16c79.setContent(html_e7bf86483b6727e4246d365b4bb3f5d9);
+            
+        
+
+        circle_marker_d7cd6d733bcd9f8c8945311795ab69e4.bindPopup(popup_af9ce06fe34d61c1df3ae0d08ae16c79)
+        ;
+
+        
+    
+    
+            var circle_marker_28cb91250bd6a51e28e0bc45a73886ea = L.circleMarker(
+                [50.5952932, 32.3520809],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fc2354b605ccddae4196833aa61f557b);
+        
+    
+        var popup_e6b788282a82e278dc10d363d84302b8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3927423939360eb146d790a10ff0ed0d = $(`<div id="html_3927423939360eb146d790a10ff0ed0d" style="width: 100.0%; height: 100.0%;">Станція (вул. Київська, 56, Прилуки, Чернігівська область)</div>`)[0];
+                popup_e6b788282a82e278dc10d363d84302b8.setContent(html_3927423939360eb146d790a10ff0ed0d);
+            
+        
+
+        circle_marker_28cb91250bd6a51e28e0bc45a73886ea.bindPopup(popup_e6b788282a82e278dc10d363d84302b8)
+        ;
+
+        
+    
+    
+            feature_group_fc2354b605ccddae4196833aa61f557b.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_8a24a4ba3e8c30240e75de5154ffc442 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_63ab6f81d1835da87a7515ad9419ee65 = L.circleMarker(
+                [51.4958327, 31.2939141],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_64b9fe2f23e8a28ba301f57f201a3baf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e632e2de66df120f4ee50435aca87534 = $(`<div id="html_e632e2de66df120f4ee50435aca87534" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Чернишевського,3, Чернігів, Чернігівська область)</div>`)[0];
+                popup_64b9fe2f23e8a28ba301f57f201a3baf.setContent(html_e632e2de66df120f4ee50435aca87534);
+            
+        
+
+        circle_marker_63ab6f81d1835da87a7515ad9419ee65.bindPopup(popup_64b9fe2f23e8a28ba301f57f201a3baf)
+        ;
+
+        
+    
+    
+            var circle_marker_f2a8b72987a07765774c2f03671fed75 = L.circleMarker(
+                [51.886557, 31.6018175],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_32c8aa7f0982200e9be173fd0d9e4ca4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2af99261a804da398067fb3484144959 = $(`<div id="html_2af99261a804da398067fb3484144959" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Чумака, 14, Городня, Чернігівська область)</div>`)[0];
+                popup_32c8aa7f0982200e9be173fd0d9e4ca4.setContent(html_2af99261a804da398067fb3484144959);
+            
+        
+
+        circle_marker_f2a8b72987a07765774c2f03671fed75.bindPopup(popup_32c8aa7f0982200e9be173fd0d9e4ca4)
+        ;
+
+        
+    
+    
+            var circle_marker_bf23d7ae967cfa6e9e1f8c1220f8fe7d = L.circleMarker(
+                [50.9229533, 31.1410797],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_151784bd7a81ef1ca43b5578047a3895 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2af32cd76b47ae4d50b3bed667631a5c = $(`<div id="html_2af32cd76b47ae4d50b3bed667631a5c" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Незалежності, 1, Козелець, Чернігівська область)</div>`)[0];
+                popup_151784bd7a81ef1ca43b5578047a3895.setContent(html_2af32cd76b47ae4d50b3bed667631a5c);
+            
+        
+
+        circle_marker_bf23d7ae967cfa6e9e1f8c1220f8fe7d.bindPopup(popup_151784bd7a81ef1ca43b5578047a3895)
+        ;
+
+        
+    
+    
+            var circle_marker_00159785db4d59c4778d3195c6727dbf = L.circleMarker(
+                [51.8, 31.083333],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_e8149900a76e06e74bf5714067879c21 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2460fd8cfcedd0eb750c56d627c05a49 = $(`<div id="html_2460fd8cfcedd0eb750c56d627c05a49" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Соборна, 9, Ріпки, Чернігівська область)</div>`)[0];
+                popup_e8149900a76e06e74bf5714067879c21.setContent(html_2460fd8cfcedd0eb750c56d627c05a49);
+            
+        
+
+        circle_marker_00159785db4d59c4778d3195c6727dbf.bindPopup(popup_e8149900a76e06e74bf5714067879c21)
+        ;
+
+        
+    
+    
+            var circle_marker_18e660210005f7ba406886c478979163 = L.circleMarker(
+                [51.3760884, 31.6418539],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_94d292c321112c9e16bcb6a411246f48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7fb7d8e92a7cb942cd694b2174b87034 = $(`<div id="html_7fb7d8e92a7cb942cd694b2174b87034" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Пирогова, 16, Куликівка, Чернігівська область)</div>`)[0];
+                popup_94d292c321112c9e16bcb6a411246f48.setContent(html_7fb7d8e92a7cb942cd694b2174b87034);
+            
+        
+
+        circle_marker_18e660210005f7ba406886c478979163.bindPopup(popup_94d292c321112c9e16bcb6a411246f48)
+        ;
+
+        
+    
+    
+            var circle_marker_5189b0fb7e3e365ee2d9d548555ebd27 = L.circleMarker(
+                [51.5730085, 32.9741901],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_63b70cfbce75d5fdd4be9bc6539bf800 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ae26ecb7f8da595f40abc0acff4f5a84 = $(`<div id="html_ae26ecb7f8da595f40abc0acff4f5a84" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Чернігівська, 56, Короп, Чернігівська область)</div>`)[0];
+                popup_63b70cfbce75d5fdd4be9bc6539bf800.setContent(html_ae26ecb7f8da595f40abc0acff4f5a84);
+            
+        
+
+        circle_marker_5189b0fb7e3e365ee2d9d548555ebd27.bindPopup(popup_63b70cfbce75d5fdd4be9bc6539bf800)
+        ;
+
+        
+    
+    
+            var circle_marker_69e16cc41557faf1b320223e734b8927 = L.circleMarker(
+                [51.53162, 32.229454],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_a203c354054714e49bbf4ec4c7ea2aa7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a79355a2f63befe4afe36622531ee10e = $(`<div id="html_a79355a2f63befe4afe36622531ee10e" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Шевченка, 61а, Мена, Чернігівська область)</div>`)[0];
+                popup_a203c354054714e49bbf4ec4c7ea2aa7.setContent(html_a79355a2f63befe4afe36622531ee10e);
+            
+        
+
+        circle_marker_69e16cc41557faf1b320223e734b8927.bindPopup(popup_a203c354054714e49bbf4ec4c7ea2aa7)
+        ;
+
+        
+    
+    
+            var circle_marker_afada0a31d5fbd1ffef4b3de2b0c07a4 = L.circleMarker(
+                [52.0018253, 33.2757264],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_1acff8a0542365905b88c16681e877ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_161182ad0014832e59401c2a616df2d0 = $(`<div id="html_161182ad0014832e59401c2a616df2d0" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Шевченка, 17, Новгород-Сіверський, Чернігівська область)</div>`)[0];
+                popup_1acff8a0542365905b88c16681e877ad.setContent(html_161182ad0014832e59401c2a616df2d0);
+            
+        
+
+        circle_marker_afada0a31d5fbd1ffef4b3de2b0c07a4.bindPopup(popup_1acff8a0542365905b88c16681e877ad)
+        ;
+
+        
+    
+    
+            var circle_marker_7d7095b1980ee042e08c015d28294a08 = L.circleMarker(
+                [52.1814619, 32.5839939],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_229bcbb4954dc19aa49385b87f24c4ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3832a451653a58e6dc316995dce2529 = $(`<div id="html_f3832a451653a58e6dc316995dce2529" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Лікарняний Хуторок, 2, Семенівка, Чернігівська область)</div>`)[0];
+                popup_229bcbb4954dc19aa49385b87f24c4ad.setContent(html_f3832a451653a58e6dc316995dce2529);
+            
+        
+
+        circle_marker_7d7095b1980ee042e08c015d28294a08.bindPopup(popup_229bcbb4954dc19aa49385b87f24c4ad)
+        ;
+
+        
+    
+    
+            var circle_marker_bea25bc22c89d42537477f743a8e5919 = L.circleMarker(
+                [51.8156925, 31.9533328],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_a78c5794326b28eecd4a56738faa23e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bf9d846580a1defaff258d082741561f = $(`<div id="html_bf9d846580a1defaff258d082741561f" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Спортивна, 21, Сновськ, Чернігівська область)</div>`)[0];
+                popup_a78c5794326b28eecd4a56738faa23e7.setContent(html_bf9d846580a1defaff258d082741561f);
+            
+        
+
+        circle_marker_bea25bc22c89d42537477f743a8e5919.bindPopup(popup_a78c5794326b28eecd4a56738faa23e7)
+        ;
+
+        
+    
+    
+            var circle_marker_d5c9f8ad76694e3a1a915256c404786a = L.circleMarker(
+                [51.52457099999999, 32.5004913],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_98cd838933c52bf341379423100f6a3a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_772c9f1a5ea2c9d7893e7785e2e9a427 = $(`<div id="html_772c9f1a5ea2c9d7893e7785e2e9a427" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Якова Скидана, 5/3, Сосниця, Чернігівська область)</div>`)[0];
+                popup_98cd838933c52bf341379423100f6a3a.setContent(html_772c9f1a5ea2c9d7893e7785e2e9a427);
+            
+        
+
+        circle_marker_d5c9f8ad76694e3a1a915256c404786a.bindPopup(popup_98cd838933c52bf341379423100f6a3a)
+        ;
+
+        
+    
+    
+            var circle_marker_3d91f3bb5122c118082dc7af81ecaa05 = L.circleMarker(
+                [51.17775, 32.82234],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_98def8d8e25a2e8aec603c8bcb037d48 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_396895ac53d509023025e0d7bf80d962 = $(`<div id="html_396895ac53d509023025e0d7bf80d962" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Деповська, 8, Бахмач, Чернігівська область)</div>`)[0];
+                popup_98def8d8e25a2e8aec603c8bcb037d48.setContent(html_396895ac53d509023025e0d7bf80d962);
+            
+        
+
+        circle_marker_3d91f3bb5122c118082dc7af81ecaa05.bindPopup(popup_98def8d8e25a2e8aec603c8bcb037d48)
+        ;
+
+        
+    
+    
+            var circle_marker_bab17ef862eefd17c7d8ac5ebae14e6c = L.circleMarker(
+                [50.7438882, 31.3859435],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_6a3eb8452f8abf8da90d021f22ebfe3f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31abb3a3df97444620d538f0a551549d = $(`<div id="html_31abb3a3df97444620d538f0a551549d" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Олега Бичка, 1, Бобровиця, Чернігівська область)</div>`)[0];
+                popup_6a3eb8452f8abf8da90d021f22ebfe3f.setContent(html_31abb3a3df97444620d538f0a551549d);
+            
+        
+
+        circle_marker_bab17ef862eefd17c7d8ac5ebae14e6c.bindPopup(popup_6a3eb8452f8abf8da90d021f22ebfe3f)
+        ;
+
+        
+    
+    
+            var circle_marker_6deb73f4c40f8c083faa64f1a29bdaf4 = L.circleMarker(
+                [51.252485, 32.4227839],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_14f0f7b00a7c3900b1102a7f73980c05 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b829d1fec2aa274de0872809eee02e8 = $(`<div id="html_8b829d1fec2aa274de0872809eee02e8" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Семена Палія, 22, Борзна, Чернігівська область)</div>`)[0];
+                popup_14f0f7b00a7c3900b1102a7f73980c05.setContent(html_8b829d1fec2aa274de0872809eee02e8);
+            
+        
+
+        circle_marker_6deb73f4c40f8c083faa64f1a29bdaf4.bindPopup(popup_14f0f7b00a7c3900b1102a7f73980c05)
+        ;
+
+        
+    
+    
+            var circle_marker_4671bd6aa68b56a054df80518a89c92f = L.circleMarker(
+                [50.9352683, 31.5756083],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_c901f1c2a9bd5e9097974c67313d4612 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4187cf0ec948933544ae2aa611bd61d1 = $(`<div id="html_4187cf0ec948933544ae2aa611bd61d1" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Центральна, 53, Носівка, Чернігівська область)</div>`)[0];
+                popup_c901f1c2a9bd5e9097974c67313d4612.setContent(html_4187cf0ec948933544ae2aa611bd61d1);
+            
+        
+
+        circle_marker_4671bd6aa68b56a054df80518a89c92f.bindPopup(popup_c901f1c2a9bd5e9097974c67313d4612)
+        ;
+
+        
+    
+    
+            var circle_marker_dd618926f0872a05c31a011cff4e20d9 = L.circleMarker(
+                [50.4891956, 32.720033],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_2d2ab221698de8621736bc4baa9b4c27 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c79f9101a69303c2fe068386e1e46d3f = $(`<div id="html_c79f9101a69303c2fe068386e1e46d3f" style="width: 100.0%; height: 100.0%;">Підстанція (вул. 9 Травня, 2а, Варва, Чернігівська область)</div>`)[0];
+                popup_2d2ab221698de8621736bc4baa9b4c27.setContent(html_c79f9101a69303c2fe068386e1e46d3f);
+            
+        
+
+        circle_marker_dd618926f0872a05c31a011cff4e20d9.bindPopup(popup_2d2ab221698de8621736bc4baa9b4c27)
+        ;
+
+        
+    
+    
+            var circle_marker_ebfc2f77871674f9b901be104101b5ad = L.circleMarker(
+                [50.8669207, 32.3963203],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_bd633de84acd51e3fe9b11ceea496e99 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96dd0325f13f674cda0ab6d81bd01de5 = $(`<div id="html_96dd0325f13f674cda0ab6d81bd01de5" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Ковалівка, 6, Ічня, Чернігівська область)</div>`)[0];
+                popup_bd633de84acd51e3fe9b11ceea496e99.setContent(html_96dd0325f13f674cda0ab6d81bd01de5);
+            
+        
+
+        circle_marker_ebfc2f77871674f9b901be104101b5ad.bindPopup(popup_bd633de84acd51e3fe9b11ceea496e99)
+        ;
+
+        
+    
+    
+            var circle_marker_efe5f65338b213f0027381e0d496491a = L.circleMarker(
+                [50.5965806, 32.3663401],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_9e2479dd57f6d192835600008587da3a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a28f78c4f78f3f2e7b2fc039bbea6b1 = $(`<div id="html_6a28f78c4f78f3f2e7b2fc039bbea6b1" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Київська,98, Прилуки, Чернігівська область)</div>`)[0];
+                popup_9e2479dd57f6d192835600008587da3a.setContent(html_6a28f78c4f78f3f2e7b2fc039bbea6b1);
+            
+        
+
+        circle_marker_efe5f65338b213f0027381e0d496491a.bindPopup(popup_9e2479dd57f6d192835600008587da3a)
+        ;
+
+        
+    
+    
+            var circle_marker_f06093367f2940856a35aad032b43cb0 = L.circleMarker(
+                [50.6617687, 32.914954],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_3a4f78e87dc98de76f1bcd42207917d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8fe7a12a91572c82c963c3d6caf7bede = $(`<div id="html_8fe7a12a91572c82c963c3d6caf7bede" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Миру, 19, Срібне, Чернігівська область)</div>`)[0];
+                popup_3a4f78e87dc98de76f1bcd42207917d6.setContent(html_8fe7a12a91572c82c963c3d6caf7bede);
+            
+        
+
+        circle_marker_f06093367f2940856a35aad032b43cb0.bindPopup(popup_3a4f78e87dc98de76f1bcd42207917d6)
+        ;
+
+        
+    
+    
+            var circle_marker_f0154fe22e028cd7fc3053275433589f = L.circleMarker(
+                [50.84405229999999, 33.1398067],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_375cd772683e4d1a58eb6b15436a8b69 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e5994607b4668596c9871c2652ea7a5f = $(`<div id="html_e5994607b4668596c9871c2652ea7a5f" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Центральна, 63, Талалаївка, Чернігівська область)</div>`)[0];
+                popup_375cd772683e4d1a58eb6b15436a8b69.setContent(html_e5994607b4668596c9871c2652ea7a5f);
+            
+        
+
+        circle_marker_f0154fe22e028cd7fc3053275433589f.bindPopup(popup_375cd772683e4d1a58eb6b15436a8b69)
+        ;
+
+        
+    
+    
+            var circle_marker_acd753323e7db555d4c38e209afe6498 = L.circleMarker(
+                [51.4958327, 31.2939141],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8a24a4ba3e8c30240e75de5154ffc442);
+        
+    
+        var popup_4c0c89234e4e2a6df3acc4efa808be7a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d2cc088550903aa97997f09b0246836 = $(`<div id="html_1d2cc088550903aa97997f09b0246836" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Чернишевського, 3, Чернігів, Чернігівська область)</div>`)[0];
+                popup_4c0c89234e4e2a6df3acc4efa808be7a.setContent(html_1d2cc088550903aa97997f09b0246836);
+            
+        
+
+        circle_marker_acd753323e7db555d4c38e209afe6498.bindPopup(popup_4c0c89234e4e2a6df3acc4efa808be7a)
+        ;
+
+        
+    
+    
+            feature_group_8a24a4ba3e8c30240e75de5154ffc442.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_707b9fbb8064f0712c6d328508a6a75d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_123af0e4b4b7cedc0863ee85b972def2 = L.circleMarker(
+                [51.4958327, 31.2939141],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_707b9fbb8064f0712c6d328508a6a75d);
+        
+    
+        var popup_206c6f347077c1d5047fa2a66fe06ab8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa38434086ecf9644be1041862051269 = $(`<div id="html_fa38434086ecf9644be1041862051269" style="width: 100.0%; height: 100.0%;">ОДС (вул. Чернишевського,3, Чернігів, Чернігівська область)</div>`)[0];
+                popup_206c6f347077c1d5047fa2a66fe06ab8.setContent(html_fa38434086ecf9644be1041862051269);
+            
+        
+
+        circle_marker_123af0e4b4b7cedc0863ee85b972def2.bindPopup(popup_206c6f347077c1d5047fa2a66fe06ab8)
+        ;
+
+        
+    
+    
+            feature_group_707b9fbb8064f0712c6d328508a6a75d.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var feature_group_8f3ec55cd44a276670db56629cbc5aaf = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_6bbdceb30a387a3027258a5c70976525 = L.circleMarker(
+                [51.4496101, 31.0776841],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_032870be65253641ac946b2ea7557cdc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b07ad2ebce71afa61b440c7c936172d3 = $(`<div id="html_b07ad2ebce71afa61b440c7c936172d3" style="width: 100.0%; height: 100.0%;">Пункт базування (Вул. Миру, 3, Михайло-Коцюбинське, Чернігівська область)</div>`)[0];
+                popup_032870be65253641ac946b2ea7557cdc.setContent(html_b07ad2ebce71afa61b440c7c936172d3);
+            
+        
+
+        circle_marker_6bbdceb30a387a3027258a5c70976525.bindPopup(popup_032870be65253641ac946b2ea7557cdc)
+        ;
+
+        
+    
+    
+            var circle_marker_e61625275bf2214d17731b7e07c3c0c5 = L.circleMarker(
+                [51.2988849, 30.9213542],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_0643830e302c154186d954ad57adbb2f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_57938c65e8ddac457f0536ac30dfb5e7 = $(`<div id="html_57938c65e8ddac457f0536ac30dfb5e7" style="width: 100.0%; height: 100.0%;">Пункт базування (Вул. Танкістів, 1а, Гончарівське, Чернігівська область)</div>`)[0];
+                popup_0643830e302c154186d954ad57adbb2f.setContent(html_57938c65e8ddac457f0536ac30dfb5e7);
+            
+        
+
+        circle_marker_e61625275bf2214d17731b7e07c3c0c5.bindPopup(popup_0643830e302c154186d954ad57adbb2f)
+        ;
+
+        
+    
+    
+            var circle_marker_6d80c24bdbb770651aae05b94cce4114 = L.circleMarker(
+                [51.56467439999999, 31.7847761],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_6faf2355de794cf75a75d4c11f479f67 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8d8836ec98b80df2f4f6491cff3e294 = $(`<div id="html_a8d8836ec98b80df2f4f6491cff3e294" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Стольненська, 13, Березна, Чернігівська область)</div>`)[0];
+                popup_6faf2355de794cf75a75d4c11f479f67.setContent(html_a8d8836ec98b80df2f4f6491cff3e294);
+            
+        
+
+        circle_marker_6d80c24bdbb770651aae05b94cce4114.bindPopup(popup_6faf2355de794cf75a75d4c11f479f67)
+        ;
+
+        
+    
+    
+            var circle_marker_9d2026d7ce3a4d46b0850c8a89a7e2d9 = L.circleMarker(
+                [51.8827033, 31.5934684],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_3f6285c0ef59b05c7ab83c39831ee81f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f6f70688577d5ca2da3fc126882e1ac = $(`<div id="html_8f6f70688577d5ca2da3fc126882e1ac" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Чернігівська, 75, Тупичів, Чернігівська область)</div>`)[0];
+                popup_3f6285c0ef59b05c7ab83c39831ee81f.setContent(html_8f6f70688577d5ca2da3fc126882e1ac);
+            
+        
+
+        circle_marker_9d2026d7ce3a4d46b0850c8a89a7e2d9.bindPopup(popup_3f6285c0ef59b05c7ab83c39831ee81f)
+        ;
+
+        
+    
+    
+            var circle_marker_4905492323b0e763ef648762767c2006 = L.circleMarker(
+                [50.9557892, 30.8918121],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_1de5d1709a3473b3579ef8dc8abb039f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0da60f6bf9f7e3a9de59252fb7938bff = $(`<div id="html_0da60f6bf9f7e3a9de59252fb7938bff" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Бондаренка, 32, Остер, Чернігівська область)</div>`)[0];
+                popup_1de5d1709a3473b3579ef8dc8abb039f.setContent(html_0da60f6bf9f7e3a9de59252fb7938bff);
+            
+        
+
+        circle_marker_4905492323b0e763ef648762767c2006.bindPopup(popup_1de5d1709a3473b3579ef8dc8abb039f)
+        ;
+
+        
+    
+    
+            var circle_marker_3d42901ebf8ffdd9e6a10f4b80aa1cb7 = L.circleMarker(
+                [50.9465962, 30.8716068],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_1f42a1d5a4a1cc45dc5a8228ce137e90 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f6a3452e77a4825948a1422bb0d79808 = $(`<div id="html_f6a3452e77a4825948a1422bb0d79808" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Рибалко, 6, Десна, Чернігівська область)</div>`)[0];
+                popup_1f42a1d5a4a1cc45dc5a8228ce137e90.setContent(html_f6a3452e77a4825948a1422bb0d79808);
+            
+        
+
+        circle_marker_3d42901ebf8ffdd9e6a10f4b80aa1cb7.bindPopup(popup_1f42a1d5a4a1cc45dc5a8228ce137e90)
+        ;
+
+        
+    
+    
+            var circle_marker_30fdd6e620516d29f47040aa65b12937 = L.circleMarker(
+                [52.0625111, 31.1952063],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_3a4d6c3cad35344dcabd20a4813ed0fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1650d96e6d03e461bdfa81955b04346 = $(`<div id="html_f1650d96e6d03e461bdfa81955b04346" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Богдана Хмельницького, 60, Добрянка, Чернігівська область)</div>`)[0];
+                popup_3a4d6c3cad35344dcabd20a4813ed0fc.setContent(html_f1650d96e6d03e461bdfa81955b04346);
+            
+        
+
+        circle_marker_30fdd6e620516d29f47040aa65b12937.bindPopup(popup_3a4d6c3cad35344dcabd20a4813ed0fc)
+        ;
+
+        
+    
+    
+            var circle_marker_50779a290b6340d1a1d11edca58457f1 = L.circleMarker(
+                [51.700259, 30.6625433],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_6e6477ea7e8c1f10d2e7f65f774654d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d5ae584f6a46d213c5347162fd03ba20 = $(`<div id="html_d5ae584f6a46d213c5347162fd03ba20" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Добринівська, 60, Любеч, Чернігівська область)</div>`)[0];
+                popup_6e6477ea7e8c1f10d2e7f65f774654d6.setContent(html_d5ae584f6a46d213c5347162fd03ba20);
+            
+        
+
+        circle_marker_50779a290b6340d1a1d11edca58457f1.bindPopup(popup_6e6477ea7e8c1f10d2e7f65f774654d6)
+        ;
+
+        
+    
+    
+            var circle_marker_d96ac5c5d73ec3d4f19a0227e02f761a = L.circleMarker(
+                [51.873843, 32.610302],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_e2446f10a2809207be4d830c00d5bbbf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_58e382c854196026c13774c0203a953c = $(`<div id="html_58e382c854196026c13774c0203a953c" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Центральна, 143, Холми, Чернігівська область)</div>`)[0];
+                popup_e2446f10a2809207be4d830c00d5bbbf.setContent(html_58e382c854196026c13774c0203a953c);
+            
+        
+
+        circle_marker_d96ac5c5d73ec3d4f19a0227e02f761a.bindPopup(popup_e2446f10a2809207be4d830c00d5bbbf)
+        ;
+
+        
+    
+    
+            var circle_marker_ce555c7f7a83a95906ef61516d39bb73 = L.circleMarker(
+                [51.7256621, 32.8465687],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_eae2c5dde2b165df185c7a9d86bec8a5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e00fee755a85eca3d5497f8a35384ee5 = $(`<div id="html_e00fee755a85eca3d5497f8a35384ee5" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Свириденка, 10, Понорниця, Чернігівська область)</div>`)[0];
+                popup_eae2c5dde2b165df185c7a9d86bec8a5.setContent(html_e00fee755a85eca3d5497f8a35384ee5);
+            
+        
+
+        circle_marker_ce555c7f7a83a95906ef61516d39bb73.bindPopup(popup_eae2c5dde2b165df185c7a9d86bec8a5)
+        ;
+
+        
+    
+    
+            var circle_marker_8cbae823c42d9c23c804fbf20d43dff9 = L.circleMarker(
+                [51.4635426, 32.3370833],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_beeeab8438702fdcb48dd8137d6963a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5fe39a76b9fd1dc28065eb887e029e3 = $(`<div id="html_c5fe39a76b9fd1dc28065eb887e029e3" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Зарічна, 11, Макошине, Чернігівська область)</div>`)[0];
+                popup_beeeab8438702fdcb48dd8137d6963a4.setContent(html_c5fe39a76b9fd1dc28065eb887e029e3);
+            
+        
+
+        circle_marker_8cbae823c42d9c23c804fbf20d43dff9.bindPopup(popup_beeeab8438702fdcb48dd8137d6963a4)
+        ;
+
+        
+    
+    
+            var circle_marker_725f3ea392a6acfc9bd117c232a42526 = L.circleMarker(
+                [51.51640399999999, 31.915299],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_5c5b00fa0c3de555140e0e9b87e527d7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_94a9fc64bfbe000149f96fced5affddd = $(`<div id="html_94a9fc64bfbe000149f96fced5affddd" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Коцюбинського, 3, Стольне, Чернігівська область)</div>`)[0];
+                popup_5c5b00fa0c3de555140e0e9b87e527d7.setContent(html_94a9fc64bfbe000149f96fced5affddd);
+            
+        
+
+        circle_marker_725f3ea392a6acfc9bd117c232a42526.bindPopup(popup_5c5b00fa0c3de555140e0e9b87e527d7)
+        ;
+
+        
+    
+    
+            var circle_marker_33fac11bc23d6c758956b687875eb0f2 = L.circleMarker(
+                [51.4417852, 32.0067471],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_8dfb266261e7a47f232722da7d75f3cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e1fee6463cd0ef849d16d635d239dd37 = $(`<div id="html_e1fee6463cd0ef849d16d635d239dd37" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Миру,44, Бірківка, Чернігівська область)</div>`)[0];
+                popup_8dfb266261e7a47f232722da7d75f3cc.setContent(html_e1fee6463cd0ef849d16d635d239dd37);
+            
+        
+
+        circle_marker_33fac11bc23d6c758956b687875eb0f2.bindPopup(popup_8dfb266261e7a47f232722da7d75f3cc)
+        ;
+
+        
+    
+    
+            var circle_marker_381e6bf39b04c35024d5d1638750b490 = L.circleMarker(
+                [52.3383057, 33.289655],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_d1598ac34d9be9fbf3f572f625576404 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_719bcd2dd334e91e2f3c43d1490dc70c = $(`<div id="html_719bcd2dd334e91e2f3c43d1490dc70c" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Миру, 190, Грем'Яч, Чернігівська область)</div>`)[0];
+                popup_d1598ac34d9be9fbf3f572f625576404.setContent(html_719bcd2dd334e91e2f3c43d1490dc70c);
+            
+        
+
+        circle_marker_381e6bf39b04c35024d5d1638750b490.bindPopup(popup_d1598ac34d9be9fbf3f572f625576404)
+        ;
+
+        
+    
+    
+            var circle_marker_7976b97151380efe42cd3ec078eee7fd = L.circleMarker(
+                [50.839216, 31.9117829],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_ce85b4ece244cae40f05c9673a00ace2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8257e779440c4bc073fde2da6fef778a = $(`<div id="html_8257e779440c4bc073fde2da6fef778a" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Троїцька, 90, Лосинівка, Чернігівська область)</div>`)[0];
+                popup_ce85b4ece244cae40f05c9673a00ace2.setContent(html_8257e779440c4bc073fde2da6fef778a);
+            
+        
+
+        circle_marker_7976b97151380efe42cd3ec078eee7fd.bindPopup(popup_ce85b4ece244cae40f05c9673a00ace2)
+        ;
+
+        
+    
+    
+            var circle_marker_e6df691096f462f56e9e1c158231196b = L.circleMarker(
+                [50.9363319, 32.946187],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_1805a17fbcff3b9742a200eb039b95b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_df7123f8d4db9b97607a883fb4f7f21a = $(`<div id="html_df7123f8d4db9b97607a883fb4f7f21a" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Пушкіна, 89, Дмитрівка, Чернігівська область)</div>`)[0];
+                popup_1805a17fbcff3b9742a200eb039b95b0.setContent(html_df7123f8d4db9b97607a883fb4f7f21a);
+            
+        
+
+        circle_marker_e6df691096f462f56e9e1c158231196b.bindPopup(popup_1805a17fbcff3b9742a200eb039b95b0)
+        ;
+
+        
+    
+    
+            var circle_marker_438a8b71792a3c5d26fd905712da71a0 = L.circleMarker(
+                [51.34125040000001, 32.8797802],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_97900a84bbdeb844ee6807b8cb90f5a9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_620e3c8bae48bf14b8b259ffb3fce587 = $(`<div id="html_620e3c8bae48bf14b8b259ffb3fce587" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. В. Ющенка, 54, Батурин, Чернігівська область)</div>`)[0];
+                popup_97900a84bbdeb844ee6807b8cb90f5a9.setContent(html_620e3c8bae48bf14b8b259ffb3fce587);
+            
+        
+
+        circle_marker_438a8b71792a3c5d26fd905712da71a0.bindPopup(popup_97900a84bbdeb844ee6807b8cb90f5a9)
+        ;
+
+        
+    
+    
+            var circle_marker_2041b67c65d14bbc3e0606a1586601a1 = L.circleMarker(
+                [50.5974053, 31.6719572],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_6b49a721037c31082a7b16d4bc2902b3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ed7ee5cf64b0d1a4d21dd3db2489acee = $(`<div id="html_ed7ee5cf64b0d1a4d21dd3db2489acee" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Центральна, 4, Новий Биків, Чернігівська область)</div>`)[0];
+                popup_6b49a721037c31082a7b16d4bc2902b3.setContent(html_ed7ee5cf64b0d1a4d21dd3db2489acee);
+            
+        
+
+        circle_marker_2041b67c65d14bbc3e0606a1586601a1.bindPopup(popup_6b49a721037c31082a7b16d4bc2902b3)
+        ;
+
+        
+    
+    
+            var circle_marker_a0748f1fc7809777d0e2f7a84f8ded51 = L.circleMarker(
+                [50.87690420000001, 32.644367],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_ee916807d091e5fa544e6ad54293e1ff = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_06b476fe0756510bb35670743443c023 = $(`<div id="html_06b476fe0756510bb35670743443c023" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Мазепи, 11а, Парафіївка, Чернігівська область)</div>`)[0];
+                popup_ee916807d091e5fa544e6ad54293e1ff.setContent(html_06b476fe0756510bb35670743443c023);
+            
+        
+
+        circle_marker_a0748f1fc7809777d0e2f7a84f8ded51.bindPopup(popup_ee916807d091e5fa544e6ad54293e1ff)
+        ;
+
+        
+    
+    
+            var circle_marker_d7703f5159c1f4ac627cbab65abf8177 = L.circleMarker(
+                [50.6955965, 32.1911968],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_7eb15aec083effb052297af48700fbd2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cc23d4c58706adc317224a37195cbb71 = $(`<div id="html_cc23d4c58706adc317224a37195cbb71" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Чернігівська, 27, Мала Дівиця, Чернігівська область)</div>`)[0];
+                popup_7eb15aec083effb052297af48700fbd2.setContent(html_cc23d4c58706adc317224a37195cbb71);
+            
+        
+
+        circle_marker_d7703f5159c1f4ac627cbab65abf8177.bindPopup(popup_7eb15aec083effb052297af48700fbd2)
+        ;
+
+        
+    
+    
+            var circle_marker_a255be177dc38d6baa430feb9f45a6fa = L.circleMarker(
+                [50.4601616, 32.4005456],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_d4097df7bc558624380d63f5302a107f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_be6f293977ba4d77171e642129dbd3fc = $(`<div id="html_be6f293977ba4d77171e642129dbd3fc" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Мічуріна, 2, Линовиця, Чернігівська область)</div>`)[0];
+                popup_d4097df7bc558624380d63f5302a107f.setContent(html_be6f293977ba4d77171e642129dbd3fc);
+            
+        
+
+        circle_marker_a255be177dc38d6baa430feb9f45a6fa.bindPopup(popup_d4097df7bc558624380d63f5302a107f)
+        ;
+
+        
+    
+    
+            var circle_marker_1ddf0f5ad4b6ac58a360f590719c026b = L.circleMarker(
+                [50.519669, 32.5800516],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f3ec55cd44a276670db56629cbc5aaf);
+        
+    
+        var popup_e30a01709b71f66a81033f8e5989bcf1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77aebf6b5baecc2f7646d792ee5e665f = $(`<div id="html_77aebf6b5baecc2f7646d792ee5e665f" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Миру, 85, Ладан, Чернігівська область)</div>`)[0];
+                popup_e30a01709b71f66a81033f8e5989bcf1.setContent(html_77aebf6b5baecc2f7646d792ee5e665f);
+            
+        
+
+        circle_marker_1ddf0f5ad4b6ac58a360f590719c026b.bindPopup(popup_e30a01709b71f66a81033f8e5989bcf1)
+        ;
+
+        
+    
+    
+            feature_group_8f3ec55cd44a276670db56629cbc5aaf.addTo(map_993698e1b8b7763987904cef09f45378);
+        
+    
+            var layer_control_60745b3b7af3b9d029695bf13341ca09_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_5d925724ef85c9ae7cde5f34be70c1c4,
+                },
+                overlays :  {
+                    "\u041d\u0430\u0434\u043a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u0438\u0439 \u0417\u041e\u0417" : feature_group_cc5a2ca4d57826854ad4ed4bf024d65c,
+                    "\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u0438\u0439 \u0417\u041e\u0417" : feature_group_d5d1ffbe5935fce1424437a60f4992ed,
+                    "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439 \u0417\u041e\u0417" : feature_group_137640b2d2114b2471ab4bdb52053f8c,
+                    "\u0426\u0415\u041c\u0414" : feature_group_59fab04ccd42b38f49d44d1921dad3bd,
+                    "\u0421\u0442\u0430\u043d\u0446\u0456\u044f" : feature_group_fc2354b605ccddae4196833aa61f557b,
+                    "\u041f\u0456\u0434\u0441\u0442\u0430\u043d\u0446\u0456\u044f" : feature_group_8a24a4ba3e8c30240e75de5154ffc442,
+                    "\u041e\u0414\u0421" : feature_group_707b9fbb8064f0712c6d328508a6a75d,
+                    "\u041f\u0443\u043d\u043a\u0442 \u0431\u0430\u0437\u0443\u0432\u0430\u043d\u043d\u044f" : feature_group_8f3ec55cd44a276670db56629cbc5aaf,
+                },
+            };
+            let layer_control_60745b3b7af3b9d029695bf13341ca09 = L.control.layers(
+                layer_control_60745b3b7af3b9d029695bf13341ca09_layers.base_layers,
+                layer_control_60745b3b7af3b9d029695bf13341ca09_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_993698e1b8b7763987904cef09f45378);
+
+        
+</script>
+</html>
