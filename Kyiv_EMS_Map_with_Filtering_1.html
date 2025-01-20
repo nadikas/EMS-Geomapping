@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1bb2370b06ef0c5b49bbaa1fe204e768 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed;
+            bottom: 50px; left: 50px; width: 220px; height: 180px;
+            background-color: white; z-index:9999; font-size:14px;
+            border:2px solid grey; padding: 10px;">
+<h4>Legend</h4>
+<b>Догоспітальний етап</b><br>
+<i style="background:darkred; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> ЦЕМД<br>
+<i style="background:red; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Станція<br>
+<i style="background:orange; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Підстанція<br>
+<i style="background:yellow; color:black; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> Пункт базування<br>
+<i style="background:green; color:white; padding: 5px;">&nbsp;&nbsp;&nbsp;</i> ОДС<br>
+</div>
+    
+            <div class="folium-map" id="map_1bb2370b06ef0c5b49bbaa1fe204e768" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1bb2370b06ef0c5b49bbaa1fe204e768 = L.map(
+                "map_1bb2370b06ef0c5b49bbaa1fe204e768",
+                {
+                    center: [50.2581, 30.7771],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b07ec39e461adbb69468a83105e44c55 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b07ec39e461adbb69468a83105e44c55.addTo(map_1bb2370b06ef0c5b49bbaa1fe204e768);
+        
+    
+            var feature_group_c97cbd96cdc672a30b17cd8663f0e128 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_9c42f7ce716168cf2a52c180fe9cb2a1 = L.circleMarker(
+                [49.8022407, 30.1060696],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_c97cbd96cdc672a30b17cd8663f0e128);
+        
+    
+        var popup_22db279833455e86f29587a70dbe6eb0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e0acca8906ed06e128aa79393bcc8a5c = $(`<div id="html_e0acca8906ed06e128aa79393bcc8a5c" style="width: 100.0%; height: 100.0%;">ОДС (вул. Водопійна, 40, М. Біла Церква, Київська область)</div>`)[0];
+                popup_22db279833455e86f29587a70dbe6eb0.setContent(html_e0acca8906ed06e128aa79393bcc8a5c);
+            
+        
+
+        circle_marker_9c42f7ce716168cf2a52c180fe9cb2a1.bindPopup(popup_22db279833455e86f29587a70dbe6eb0)
+        ;
+
+        
+    
+    
+            feature_group_c97cbd96cdc672a30b17cd8663f0e128.addTo(map_1bb2370b06ef0c5b49bbaa1fe204e768);
+        
+    
+            var feature_group_f3076091f29170e830b4258fd40984d5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_1f5903a417757ab9dbd8b5bf005387b8 = L.circleMarker(
+                [50.3070969, 31.46433],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_0c1b2987d5ae0c6bfeb5da7a6e35a166 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ddc82f190aa716d6e3c0bf4298aff01a = $(`<div id="html_ddc82f190aa716d6e3c0bf4298aff01a" style="width: 100.0%; height: 100.0%;">Підстанція (вул.Михайлівська,50, М. Березань, Київська область)</div>`)[0];
+                popup_0c1b2987d5ae0c6bfeb5da7a6e35a166.setContent(html_ddc82f190aa716d6e3c0bf4298aff01a);
+            
+        
+
+        circle_marker_1f5903a417757ab9dbd8b5bf005387b8.bindPopup(popup_0c1b2987d5ae0c6bfeb5da7a6e35a166)
+        ;
+
+        
+    
+    
+            var circle_marker_e8117003f98e34e8e654fc1a11a12662 = L.circleMarker(
+                [49.73659749999999, 29.6693446],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_9aa424466f35f5bcaa4d5d23d4ab3dbd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_faf2fa1a9782d9000c6761a9a9aafa8f = $(`<div id="html_faf2fa1a9782d9000c6761a9a9aafa8f" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Київська, 12, М. Сквира, Київська область)</div>`)[0];
+                popup_9aa424466f35f5bcaa4d5d23d4ab3dbd.setContent(html_faf2fa1a9782d9000c6761a9a9aafa8f);
+            
+        
+
+        circle_marker_e8117003f98e34e8e654fc1a11a12662.bindPopup(popup_9aa424466f35f5bcaa4d5d23d4ab3dbd)
+        ;
+
+        
+    
+    
+            var circle_marker_017991796a6ce59e067a87aec5110ca6 = L.circleMarker(
+                [50.3474219, 30.9498707],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_90df9c3ad13d271541432ec2a6744ce3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f184c20209b02e269be1a320315b0843 = $(`<div id="html_f184c20209b02e269be1a320315b0843" style="width: 100.0%; height: 100.0%;">Підстанція (вул.Чехова,2, М. Бориспіль, Київська область)</div>`)[0];
+                popup_90df9c3ad13d271541432ec2a6744ce3.setContent(html_f184c20209b02e269be1a320315b0843);
+            
+        
+
+        circle_marker_017991796a6ce59e067a87aec5110ca6.bindPopup(popup_90df9c3ad13d271541432ec2a6744ce3)
+        ;
+
+        
+    
+    
+            var circle_marker_87e0d549d829994508598cbf0f8a2747 = L.circleMarker(
+                [51.5253546, 30.7438851],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_b592d1963bcce63f9651f89392e58db6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c75c80cd870da830a32f1a4bf15768ac = $(`<div id="html_c75c80cd870da830a32f1a4bf15768ac" style="width: 100.0%; height: 100.0%;">Підстанція (вул. 77-ї Гвардійської дивізії,7, М. Славутич, Київська область)</div>`)[0];
+                popup_b592d1963bcce63f9651f89392e58db6.setContent(html_c75c80cd870da830a32f1a4bf15768ac);
+            
+        
+
+        circle_marker_87e0d549d829994508598cbf0f8a2747.bindPopup(popup_b592d1963bcce63f9651f89392e58db6)
+        ;
+
+        
+    
+    
+            var circle_marker_a2cdf610101ef3bcce61bcbe73d87a59 = L.circleMarker(
+                [50.5381688, 30.22103],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_bc073b05d225cf3bad4a6a6b1c7bcd3b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77d9744894d35b897a5e099721cfc500 = $(`<div id="html_77d9744894d35b897a5e099721cfc500" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Яблунська, 280, М. Буча, Київська область)</div>`)[0];
+                popup_bc073b05d225cf3bad4a6a6b1c7bcd3b.setContent(html_77d9744894d35b897a5e099721cfc500);
+            
+        
+
+        circle_marker_a2cdf610101ef3bcce61bcbe73d87a59.bindPopup(popup_bc073b05d225cf3bad4a6a6b1c7bcd3b)
+        ;
+
+        
+    
+    
+            var circle_marker_c59207f4fda32ea6dd64b3ea332e97b2 = L.circleMarker(
+                [50.5096009, 30.77764669999999],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_9a87d6059e15621c58e7dca79ee81414 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_884b5cc8351b446d1e287bac063a662d = $(`<div id="html_884b5cc8351b446d1e287bac063a662d" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Київська, 3а, Смт. Бородянка, Київська область)</div>`)[0];
+                popup_9a87d6059e15621c58e7dca79ee81414.setContent(html_884b5cc8351b446d1e287bac063a662d);
+            
+        
+
+        circle_marker_c59207f4fda32ea6dd64b3ea332e97b2.bindPopup(popup_9a87d6059e15621c58e7dca79ee81414)
+        ;
+
+        
+    
+    
+            var circle_marker_7861face389bd91cb93226dfb38c21c1 = L.circleMarker(
+                [50.9340335, 29.90382409999999],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_d42ddd374fbd379e5f34d6df41970847 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff13eab62ab38da1558efc427b40cec4 = $(`<div id="html_ff13eab62ab38da1558efc427b40cec4" style="width: 100.0%; height: 100.0%;">Підстанція (вул. Київська, 23а, Смт. Іванків, Київська область)</div>`)[0];
+                popup_d42ddd374fbd379e5f34d6df41970847.setContent(html_ff13eab62ab38da1558efc427b40cec4);
+            
+        
+
+        circle_marker_7861face389bd91cb93226dfb38c21c1.bindPopup(popup_d42ddd374fbd379e5f34d6df41970847)
+        ;
+
+        
+    
+    
+            var circle_marker_43e394e7205fd5ca6aacd02608baf22e = L.circleMarker(
+                [49.5367013, 30.8651763],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_6b942f014195d31310f9bc1fc53c9611 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3bf5bd3fd27bc584bc97299ee5b9f0d3 = $(`<div id="html_3bf5bd3fd27bc584bc97299ee5b9f0d3" style="width: 100.0%; height: 100.0%;">Підстанція (вул.І.Франкка,27, М. Богуслав, Київська область)</div>`)[0];
+                popup_6b942f014195d31310f9bc1fc53c9611.setContent(html_3bf5bd3fd27bc584bc97299ee5b9f0d3);
+            
+        
+
+        circle_marker_43e394e7205fd5ca6aacd02608baf22e.bindPopup(popup_6b942f014195d31310f9bc1fc53c9611)
+        ;
+
+        
+    
+    
+            var circle_marker_465c1f6710ebbd5a3e81b3118ab9431e = L.circleMarker(
+                [50.3421689, 30.2998152],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_93276a8ef8d78fae7e9d9e376ed96800 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_72dca6bb3fab4c744c07324553ecaa62 = $(`<div id="html_72dca6bb3fab4c744c07324553ecaa62" style="width: 100.0%; height: 100.0%;">Підстанція (вул.Молодіжні,1, М. Боярка, Київська область)</div>`)[0];
+                popup_93276a8ef8d78fae7e9d9e376ed96800.setContent(html_72dca6bb3fab4c744c07324553ecaa62);
+            
+        
+
+        circle_marker_465c1f6710ebbd5a3e81b3118ab9431e.bindPopup(popup_93276a8ef8d78fae7e9d9e376ed96800)
+        ;
+
+        
+    
+    
+            var circle_marker_6af8a5890771e97d5d211c16050304f7 = L.circleMarker(
+                [50.3930549, 30.3726484],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_7f9ef7419ef1f999835f3aeaeac82cd3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e46e72a4ac6a706f3edc573c9b3376ea = $(`<div id="html_e46e72a4ac6a706f3edc573c9b3376ea" style="width: 100.0%; height: 100.0%;">Підстанція (вул.Європейська, 19, М. Вишневе, Київська область)</div>`)[0];
+                popup_7f9ef7419ef1f999835f3aeaeac82cd3.setContent(html_e46e72a4ac6a706f3edc573c9b3376ea);
+            
+        
+
+        circle_marker_6af8a5890771e97d5d211c16050304f7.bindPopup(popup_7f9ef7419ef1f999835f3aeaeac82cd3)
+        ;
+
+        
+    
+    
+            var circle_marker_e343b7afecff53adfa0d3b8f36f60a73 = L.circleMarker(
+                [50.17534819999999, 30.3250278],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_d6e3f7211e1a794f47a87f92ae90996b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a46d970a1a87c74dd3944bf42120b94 = $(`<div id="html_0a46d970a1a87c74dd3944bf42120b94" style="width: 100.0%; height: 100.0%;">Підстанція (вул.Небесної Сотні,46, М. Васильків, Київська область)</div>`)[0];
+                popup_d6e3f7211e1a794f47a87f92ae90996b.setContent(html_0a46d970a1a87c74dd3944bf42120b94);
+            
+        
+
+        circle_marker_e343b7afecff53adfa0d3b8f36f60a73.bindPopup(popup_d6e3f7211e1a794f47a87f92ae90996b)
+        ;
+
+        
+    
+    
+            var circle_marker_1f0cf37b10a4dd42c89b2d268b8ffb98 = L.circleMarker(
+                [50.4634406, 29.799736],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f3076091f29170e830b4258fd40984d5);
+        
+    
+        var popup_f47a2bbad5724cc1ce24bd96938a9f15 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4b13552817ab703e8c2bb32286c41157 = $(`<div id="html_4b13552817ab703e8c2bb32286c41157" style="width: 100.0%; height: 100.0%;">Підстанція (вул.Б.Хмельницького,56, Смт. Макарів, Київська область)</div>`)[0];
+                popup_f47a2bbad5724cc1ce24bd96938a9f15.setContent(html_4b13552817ab703e8c2bb32286c41157);
+            
+        
+
+        circle_marker_1f0cf37b10a4dd42c89b2d268b8ffb98.bindPopup(popup_f47a2bbad5724cc1ce24bd96938a9f15)
+        ;
+
+        
+    
+    
+            feature_group_f3076091f29170e830b4258fd40984d5.addTo(map_1bb2370b06ef0c5b49bbaa1fe204e768);
+        
+    
+            var feature_group_ee9e1272f4c0d80ad8d757976ad9b170 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_35b8d1c8b1a2f700ba919111395c25a1 = L.circleMarker(
+                [50.3658138, 31.3061441],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_caa4c2bdf88acf62b90fca161c4bbc1f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_19a13ee44d283636e3eaeacc7ad3c618 = $(`<div id="html_19a13ee44d283636e3eaeacc7ad3c618" style="width: 100.0%; height: 100.0%;">Пункт базування (вул, Київський шлях ,126, Смт. Баришівка, Київська область)</div>`)[0];
+                popup_caa4c2bdf88acf62b90fca161c4bbc1f.setContent(html_19a13ee44d283636e3eaeacc7ad3c618);
+            
+        
+
+        circle_marker_35b8d1c8b1a2f700ba919111395c25a1.bindPopup(popup_caa4c2bdf88acf62b90fca161c4bbc1f)
+        ;
+
+        
+    
+    
+            var circle_marker_4a4b65ae5b36720bdef99760a7fbcd07 = L.circleMarker(
+                [50.4847689, 31.7985476],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_d0f7d824eaaa77a166d3e00ca34c4b44 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f5a04baae536eabe1a39128190c3dd77 = $(`<div id="html_f5a04baae536eabe1a39128190c3dd77" style="width: 100.0%; height: 100.0%;">Пункт базування (вул Залізнична,7, Смт. Згурівка, Київська область)</div>`)[0];
+                popup_d0f7d824eaaa77a166d3e00ca34c4b44.setContent(html_f5a04baae536eabe1a39128190c3dd77);
+            
+        
+
+        circle_marker_4a4b65ae5b36720bdef99760a7fbcd07.bindPopup(popup_d0f7d824eaaa77a166d3e00ca34c4b44)
+        ;
+
+        
+    
+    
+            var circle_marker_2a7a02d2543090a1ef545b34eb917ca1 = L.circleMarker(
+                [50.4751997, 30.7579682],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_fb1685317c4ec49b8a87c88060208adf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e40dbe1eeaff72ffc707bf5db28dfffd = $(`<div id="html_e40dbe1eeaff72ffc707bf5db28dfffd" style="width: 100.0%; height: 100.0%;">Пункт базування (вул Садова ,4 А, С. Перемога, Київська область)</div>`)[0];
+                popup_fb1685317c4ec49b8a87c88060208adf.setContent(html_e40dbe1eeaff72ffc707bf5db28dfffd);
+            
+        
+
+        circle_marker_2a7a02d2543090a1ef545b34eb917ca1.bindPopup(popup_fb1685317c4ec49b8a87c88060208adf)
+        ;
+
+        
+    
+    
+            var circle_marker_067c1a35d32ca57ebab5c40191fa83c3 = L.circleMarker(
+                [50.2010891, 31.6166522],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_51ff932c75c183461f7629a42babbee0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1fad3d5a3edc945f0741137d8ebad7c5 = $(`<div id="html_1fad3d5a3edc945f0741137d8ebad7c5" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Діагональна,4, С. Студеники, Київська область)</div>`)[0];
+                popup_51ff932c75c183461f7629a42babbee0.setContent(html_1fad3d5a3edc945f0741137d8ebad7c5);
+            
+        
+
+        circle_marker_067c1a35d32ca57ebab5c40191fa83c3.bindPopup(popup_51ff932c75c183461f7629a42babbee0)
+        ;
+
+        
+    
+    
+            var circle_marker_d16bb481920b576c4847cacec1dd7519 = L.circleMarker(
+                [50.2713605, 31.7640154],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_35dc243b0431eded54d31345998a4f9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_860968d2a3c2994d3db479b97f376b99 = $(`<div id="html_860968d2a3c2994d3db479b97f376b99" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Незалежності ,71, М. Яготин, Київська область)</div>`)[0];
+                popup_35dc243b0431eded54d31345998a4f9f.setContent(html_860968d2a3c2994d3db479b97f376b99);
+            
+        
+
+        circle_marker_d16bb481920b576c4847cacec1dd7519.bindPopup(popup_35dc243b0431eded54d31345998a4f9f)
+        ;
+
+        
+    
+    
+            var circle_marker_bb7e266edd942fe71f0f6badfda9e910 = L.circleMarker(
+                [49.8217507, 30.4171903],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_242e6f0dcd8cdac54e689b37638e5506 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96a2611660fd3e931e1d94aef1f97467 = $(`<div id="html_96a2611660fd3e931e1d94aef1f97467" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Калинова, 52, М. Узин, Київська область)</div>`)[0];
+                popup_242e6f0dcd8cdac54e689b37638e5506.setContent(html_96a2611660fd3e931e1d94aef1f97467);
+            
+        
+
+        circle_marker_bb7e266edd942fe71f0f6badfda9e910.bindPopup(popup_242e6f0dcd8cdac54e689b37638e5506)
+        ;
+
+        
+    
+    
+            var circle_marker_80aa05ea5958e64634856e5ba46153f2 = L.circleMarker(
+                [49.3681293, 29.6837236],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_bb125713e8b34b8f71709beb3c4c033e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ae4c4ddca3bba6ef99ec62630c9e6ff7 = $(`<div id="html_ae4c4ddca3bba6ef99ec62630c9e6ff7" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Цвіткова, 26г, М. Тетіїв, Київська область)</div>`)[0];
+                popup_bb125713e8b34b8f71709beb3c4c033e.setContent(html_ae4c4ddca3bba6ef99ec62630c9e6ff7);
+            
+        
+
+        circle_marker_80aa05ea5958e64634856e5ba46153f2.bindPopup(popup_bb125713e8b34b8f71709beb3c4c033e)
+        ;
+
+        
+    
+    
+            var circle_marker_3e15e5ff6ad1c85bb80aa9af1a9c767f = L.circleMarker(
+                [49.5252378, 29.9278658],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_6ca0b3035b95d3304df5e5c1fa6bc723 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_137ebb8b08d3df6680d1386923180677 = $(`<div id="html_137ebb8b08d3df6680d1386923180677" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Коцюбинського, 25а, Смт. Володарка, Київська область)</div>`)[0];
+                popup_6ca0b3035b95d3304df5e5c1fa6bc723.setContent(html_137ebb8b08d3df6680d1386923180677);
+            
+        
+
+        circle_marker_3e15e5ff6ad1c85bb80aa9af1a9c767f.bindPopup(popup_6ca0b3035b95d3304df5e5c1fa6bc723)
+        ;
+
+        
+    
+    
+            var circle_marker_306d6e492ed6d0bfc305e36cf2e6e673 = L.circleMarker(
+                [49.3884011, 30.1758143],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_23234397850a21c5e4f1427e1b51a03a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d8537953b830b01fac55388512e3f242 = $(`<div id="html_d8537953b830b01fac55388512e3f242" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. С.Цимбала, 15/4, Смт. Ставище, Київська область)</div>`)[0];
+                popup_23234397850a21c5e4f1427e1b51a03a.setContent(html_d8537953b830b01fac55388512e3f242);
+            
+        
+
+        circle_marker_306d6e492ed6d0bfc305e36cf2e6e673.bindPopup(popup_23234397850a21c5e4f1427e1b51a03a)
+        ;
+
+        
+    
+    
+            var circle_marker_0e55dc9619904940b43650343f2260bc = L.circleMarker(
+                [49.3085509, 29.7943867],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_0b8f2603684cda1b4134fc2cb3b848f4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c8fb7c0a22edd572048a29731f8c3d4f = $(`<div id="html_c8fb7c0a22edd572048a29731f8c3d4f" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Л.Українки, 4, С. Денихівка, Київська область)</div>`)[0];
+                popup_0b8f2603684cda1b4134fc2cb3b848f4.setContent(html_c8fb7c0a22edd572048a29731f8c3d4f);
+            
+        
+
+        circle_marker_0e55dc9619904940b43650343f2260bc.bindPopup(popup_0b8f2603684cda1b4134fc2cb3b848f4)
+        ;
+
+        
+    
+    
+            var circle_marker_535dcb85b4129ad0dd7dd07644dce296 = L.circleMarker(
+                [50.6280926, 30.4283051],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_c915225cbdaa4668a3b3103c7c56f247 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1432762baebea632bbf228801c2c08ae = $(`<div id="html_1432762baebea632bbf228801c2c08ae" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Соборна, 78, С. Нові Петрівці, Київська область)</div>`)[0];
+                popup_c915225cbdaa4668a3b3103c7c56f247.setContent(html_1432762baebea632bbf228801c2c08ae);
+            
+        
+
+        circle_marker_535dcb85b4129ad0dd7dd07644dce296.bindPopup(popup_c915225cbdaa4668a3b3103c7c56f247)
+        ;
+
+        
+    
+    
+            var circle_marker_1ce4f8a655b12455ffe8178589d4cdf5 = L.circleMarker(
+                [50.3949761, 30.4512083],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_ecbbfadc4294d8b5005df9891cae8e65 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d64dec4fb0f337681e9a57aa043c8dce = $(`<div id="html_d64dec4fb0f337681e9a57aa043c8dce" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Молодіжна, 1а, С. Пірнове, Київська область)</div>`)[0];
+                popup_ecbbfadc4294d8b5005df9891cae8e65.setContent(html_d64dec4fb0f337681e9a57aa043c8dce);
+            
+        
+
+        circle_marker_1ce4f8a655b12455ffe8178589d4cdf5.bindPopup(popup_ecbbfadc4294d8b5005df9891cae8e65)
+        ;
+
+        
+    
+    
+            var circle_marker_43da906a97624c776a14c91690840c2c = L.circleMarker(
+                [50.8074306, 30.2882106],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_39f478ce02085ad78c0439e9cd130abc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8be2cac495662d7e1987193d6001d748 = $(`<div id="html_8be2cac495662d7e1987193d6001d748" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Революції, 320, Смт. Димер, Київська область)</div>`)[0];
+                popup_39f478ce02085ad78c0439e9cd130abc.setContent(html_8be2cac495662d7e1987193d6001d748);
+            
+        
+
+        circle_marker_43da906a97624c776a14c91690840c2c.bindPopup(popup_39f478ce02085ad78c0439e9cd130abc)
+        ;
+
+        
+    
+    
+            var circle_marker_2ef51ab60291716c553e119efdc5be30 = L.circleMarker(
+                [50.4914834, 30.3251852],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_6d1525efde342f1325eca66ae0bef7c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7d918256d1c786d21440ea6fc5a00652 = $(`<div id="html_7d918256d1c786d21440ea6fc5a00652" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Меблева, 1, Смт. Коцюбинське, Київська область)</div>`)[0];
+                popup_6d1525efde342f1325eca66ae0bef7c1.setContent(html_7d918256d1c786d21440ea6fc5a00652);
+            
+        
+
+        circle_marker_2ef51ab60291716c553e119efdc5be30.bindPopup(popup_6d1525efde342f1325eca66ae0bef7c1)
+        ;
+
+        
+    
+    
+            var circle_marker_e5ad832a7b4a1235fb3a8806fd8c4774 = L.circleMarker(
+                [50.5681818, 30.2691031],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_1039825225bed7f72245c80b5c51bf66 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd87aa408ea3f29f08da72f11c65d830 = $(`<div id="html_cd87aa408ea3f29f08da72f11c65d830" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Свято-Покровська, 43, Смт. Гостомель, Київська область)</div>`)[0];
+                popup_1039825225bed7f72245c80b5c51bf66.setContent(html_cd87aa408ea3f29f08da72f11c65d830);
+            
+        
+
+        circle_marker_e5ad832a7b4a1235fb3a8806fd8c4774.bindPopup(popup_1039825225bed7f72245c80b5c51bf66)
+        ;
+
+        
+    
+    
+            var circle_marker_5b514367db17c58bcaace4816d1c0407 = L.circleMarker(
+                [50.6960614, 29.5987334],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_3b5c316487b531041fb8cca2f2a2b28d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3b07c0345980b4ac336833b9f3be516f = $(`<div id="html_3b07c0345980b4ac336833b9f3be516f" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Шкільна, 19, Смт. Пісківка, Київська область)</div>`)[0];
+                popup_3b5c316487b531041fb8cca2f2a2b28d.setContent(html_3b07c0345980b4ac336833b9f3be516f);
+            
+        
+
+        circle_marker_5b514367db17c58bcaace4816d1c0407.bindPopup(popup_3b5c316487b531041fb8cca2f2a2b28d)
+        ;
+
+        
+    
+    
+            var circle_marker_b05513f1aeced4c5745afd59acc565b8 = L.circleMarker(
+                [50.5789195, 30.0061724],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_9b0855d328a9c358eb62bb9b6e461659 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a117f56c6fbc5a9bb5c3677a12450296 = $(`<div id="html_a117f56c6fbc5a9bb5c3677a12450296" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Амосова, 10, Смт. Клавдієво-Тарасове, Київська область)</div>`)[0];
+                popup_9b0855d328a9c358eb62bb9b6e461659.setContent(html_a117f56c6fbc5a9bb5c3677a12450296);
+            
+        
+
+        circle_marker_b05513f1aeced4c5745afd59acc565b8.bindPopup(popup_9b0855d328a9c358eb62bb9b6e461659)
+        ;
+
+        
+    
+    
+            var circle_marker_2e5b6e147b403f8b1648d46cb77ced93 = L.circleMarker(
+                [50.56874579999999, 30.095239],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_7c2bb3ec7aa2a85ee860e0e864e51480 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c9036a4aa8e7d85b972cf2e5aa4bfb6b = $(`<div id="html_c9036a4aa8e7d85b972cf2e5aa4bfb6b" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Затишна, 4, Смт. Немішаєве, Київська область)</div>`)[0];
+                popup_7c2bb3ec7aa2a85ee860e0e864e51480.setContent(html_c9036a4aa8e7d85b972cf2e5aa4bfb6b);
+            
+        
+
+        circle_marker_2e5b6e147b403f8b1648d46cb77ced93.bindPopup(popup_7c2bb3ec7aa2a85ee860e0e864e51480)
+        ;
+
+        
+    
+    
+            var circle_marker_617f5997f73d9e4b480dd9fba971f1f6 = L.circleMarker(
+                [51.0778799, 29.6399163],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_c97d2890b2fd02281e00f71b28a86e9c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3dd11ba921d0b7a13166b0a67ee35fb7 = $(`<div id="html_3dd11ba921d0b7a13166b0a67ee35fb7" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. Воздвиженська, 7, Смт. Красятичі, Київська область)</div>`)[0];
+                popup_c97d2890b2fd02281e00f71b28a86e9c.setContent(html_3dd11ba921d0b7a13166b0a67ee35fb7);
+            
+        
+
+        circle_marker_617f5997f73d9e4b480dd9fba971f1f6.bindPopup(popup_c97d2890b2fd02281e00f71b28a86e9c)
+        ;
+
+        
+    
+    
+            var circle_marker_cdaa4187ba87641972aea999209b8728 = L.circleMarker(
+                [49.8633174, 30.8231236],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_cf597638a2f99ac136e0e0030244892f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2a704715c8a78bb1e3065ba65f204908 = $(`<div id="html_2a704715c8a78bb1e3065ba65f204908" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Паркова,10, М. Кагарлик, Київська область)</div>`)[0];
+                popup_cf597638a2f99ac136e0e0030244892f.setContent(html_2a704715c8a78bb1e3065ba65f204908);
+            
+        
+
+        circle_marker_cdaa4187ba87641972aea999209b8728.bindPopup(popup_cf597638a2f99ac136e0e0030244892f)
+        ;
+
+        
+    
+    
+            var circle_marker_87c7dbdabc697daad6756c309be34f2b = L.circleMarker(
+                [49.9657673, 31.0432748],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_814bc9c143e1ce04e7ab2cbf5fe100e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7da1e1f89b1161268b4659feb87912ce = $(`<div id="html_7da1e1f89b1161268b4659feb87912ce" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Шевченка,15А, М. Ржищів, Київська область)</div>`)[0];
+                popup_814bc9c143e1ce04e7ab2cbf5fe100e8.setContent(html_7da1e1f89b1161268b4659feb87912ce);
+            
+        
+
+        circle_marker_87c7dbdabc697daad6756c309be34f2b.bindPopup(popup_814bc9c143e1ce04e7ab2cbf5fe100e8)
+        ;
+
+        
+    
+    
+            var circle_marker_ba977c68d833b558a95d1159c712118c = L.circleMarker(
+                [50.1549449, 30.7382213],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_b20958121c1785906f72850103352ef7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cacc975ac23c101e0e3479fdd799877c = $(`<div id="html_cacc975ac23c101e0e3479fdd799877c" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Київська,1, М. Українка, Київська область)</div>`)[0];
+                popup_b20958121c1785906f72850103352ef7.setContent(html_cacc975ac23c101e0e3479fdd799877c);
+            
+        
+
+        circle_marker_ba977c68d833b558a95d1159c712118c.bindPopup(popup_b20958121c1785906f72850103352ef7)
+        ;
+
+        
+    
+    
+            var circle_marker_aae59c65bd817061de8f015fdaaddf68 = L.circleMarker(
+                [49.67680439999999, 30.9794202],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_2cfdc1f60eeb0d552f920d4d32135448 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2d8e6826762d977f1f193bddaa38f4e1 = $(`<div id="html_2d8e6826762d977f1f193bddaa38f4e1" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Благовіщенська,96, М. Миронівка, Київська область)</div>`)[0];
+                popup_2cfdc1f60eeb0d552f920d4d32135448.setContent(html_2d8e6826762d977f1f193bddaa38f4e1);
+            
+        
+
+        circle_marker_aae59c65bd817061de8f015fdaaddf68.bindPopup(popup_2cfdc1f60eeb0d552f920d4d32135448)
+        ;
+
+        
+    
+    
+            var circle_marker_6b9cd196188493b7468e3025276c3f71 = L.circleMarker(
+                [49.6915225, 30.48109839999999],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_98fa91e35c8c282151a705f36d737005 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fcc00c83dca16b0237273f38e2b76d80 = $(`<div id="html_fcc00c83dca16b0237273f38e2b76d80" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Вокзальна,86, Смт. Рокитне, Київська область)</div>`)[0];
+                popup_98fa91e35c8c282151a705f36d737005.setContent(html_fcc00c83dca16b0237273f38e2b76d80);
+            
+        
+
+        circle_marker_6b9cd196188493b7468e3025276c3f71.bindPopup(popup_98fa91e35c8c282151a705f36d737005)
+        ;
+
+        
+    
+    
+            var circle_marker_cd3ef255674076a99503bdd207722fb7 = L.circleMarker(
+                [49.56091989999999, 30.5024195],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_93cf5d79fcee17bb44daa3b9f3cc5136 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e11adeeef2b29b0f24e6b712b66e4f34 = $(`<div id="html_e11adeeef2b29b0f24e6b712b66e4f34" style="width: 100.0%; height: 100.0%;">Пункт базування (вул,Шевченка,35, М. Тараща, Київська область)</div>`)[0];
+                popup_93cf5d79fcee17bb44daa3b9f3cc5136.setContent(html_e11adeeef2b29b0f24e6b712b66e4f34);
+            
+        
+
+        circle_marker_cd3ef255674076a99503bdd207722fb7.bindPopup(popup_93cf5d79fcee17bb44daa3b9f3cc5136)
+        ;
+
+        
+    
+    
+            var circle_marker_e5cec7c40341d9f439d928c472c35155 = L.circleMarker(
+                [49.3913204, 30.7741751],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_109e8bacc85c9712378899e69b0d9782 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_522b5f1faed5a9703290a1b5979fa035 = $(`<div id="html_522b5f1faed5a9703290a1b5979fa035" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.О.Василенка,7, С. Медвин, Київська область)</div>`)[0];
+                popup_109e8bacc85c9712378899e69b0d9782.setContent(html_522b5f1faed5a9703290a1b5979fa035);
+            
+        
+
+        circle_marker_e5cec7c40341d9f439d928c472c35155.bindPopup(popup_109e8bacc85c9712378899e69b0d9782)
+        ;
+
+        
+    
+    
+            var circle_marker_4d90c434cbdeb1da8c2ad7728d4e44a5 = L.circleMarker(
+                [49.4881332, 30.6256744],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_115185f42591ee52bce1fd40c1220a07 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3982a20f51407e36ca0d199d256ec6d5 = $(`<div id="html_3982a20f51407e36ca0d199d256ec6d5" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Свободи,66, С. Ківшовата, Київська область)</div>`)[0];
+                popup_115185f42591ee52bce1fd40c1220a07.setContent(html_3982a20f51407e36ca0d199d256ec6d5);
+            
+        
+
+        circle_marker_4d90c434cbdeb1da8c2ad7728d4e44a5.bindPopup(popup_115185f42591ee52bce1fd40c1220a07)
+        ;
+
+        
+    
+    
+            var circle_marker_89e8fd1f1f40f76d39f3bc03f445c0fb = L.circleMarker(
+                [50.2675385, 29.8929517],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_2b32d6f426c76b6c6aa91dcaca35abb5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d71036626248d08d3659aba13d148afb = $(`<div id="html_d71036626248d08d3659aba13d148afb" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Київська,22, С. Бишів, Київська область)</div>`)[0];
+                popup_2b32d6f426c76b6c6aa91dcaca35abb5.setContent(html_d71036626248d08d3659aba13d148afb);
+            
+        
+
+        circle_marker_89e8fd1f1f40f76d39f3bc03f445c0fb.bindPopup(popup_2b32d6f426c76b6c6aa91dcaca35abb5)
+        ;
+
+        
+    
+    
+            var circle_marker_b407b3191470dfcf7178a36833e1de3b = L.circleMarker(
+                [50.1835026, 30.1120121],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_8f6b94e56f916ef665d4ffea7cf120a6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_017fc5ee6826cf1e931f2cbe5e2d8871 = $(`<div id="html_017fc5ee6826cf1e931f2cbe5e2d8871" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Театральна,5, Смт. Борова, Київська область)</div>`)[0];
+                popup_8f6b94e56f916ef665d4ffea7cf120a6.setContent(html_017fc5ee6826cf1e931f2cbe5e2d8871);
+            
+        
+
+        circle_marker_b407b3191470dfcf7178a36833e1de3b.bindPopup(popup_8f6b94e56f916ef665d4ffea7cf120a6)
+        ;
+
+        
+    
+    
+            var circle_marker_c9766bdd520ac02b963d35c7ea825ff2 = L.circleMarker(
+                [50.4070685, 30.3578718],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_2c0191d108a508e987846526a1ef2274 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0b98243207ba4076dcf594a31e5f941 = $(`<div id="html_a0b98243207ba4076dcf594a31e5f941" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Соборна, 53Б, С. Софіївська Борщагівка, Київська область)</div>`)[0];
+                popup_2c0191d108a508e987846526a1ef2274.setContent(html_a0b98243207ba4076dcf594a31e5f941);
+            
+        
+
+        circle_marker_c9766bdd520ac02b963d35c7ea825ff2.bindPopup(popup_2c0191d108a508e987846526a1ef2274)
+        ;
+
+        
+    
+    
+            var circle_marker_32ee2c8dc2d3089bf6a72fb8a56a268f = L.circleMarker(
+                [49.9550557, 30.177878],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_0a710a6a7f5b7309ff59f7b556de0f42 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5b189563793b7ac6e896312a7b76336 = $(`<div id="html_b5b189563793b7ac6e896312a7b76336" style="width: 100.0%; height: 100.0%;">Пункт базування (вул. 1-го травня,32А, Смт. Гребінки, Київська область)</div>`)[0];
+                popup_0a710a6a7f5b7309ff59f7b556de0f42.setContent(html_b5b189563793b7ac6e896312a7b76336);
+            
+        
+
+        circle_marker_32ee2c8dc2d3089bf6a72fb8a56a268f.bindPopup(popup_0a710a6a7f5b7309ff59f7b556de0f42)
+        ;
+
+        
+    
+    
+            var circle_marker_dbd4c86ae1feaf379a819ba27538d695 = L.circleMarker(
+                [50.34317, 30.4253099],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_c6cbb4afe0105179ee291fb3d0a36c60 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0a5785faedc67195029a4053321add3e = $(`<div id="html_0a5785faedc67195029a4053321add3e" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Машинобудівників,2, Смт. Чабани, Київська область)</div>`)[0];
+                popup_c6cbb4afe0105179ee291fb3d0a36c60.setContent(html_0a5785faedc67195029a4053321add3e);
+            
+        
+
+        circle_marker_dbd4c86ae1feaf379a819ba27538d695.bindPopup(popup_c6cbb4afe0105179ee291fb3d0a36c60)
+        ;
+
+        
+    
+    
+            var circle_marker_d8401fa9e58e0a28819be037adf05dd3 = L.circleMarker(
+                [50.39933749999999, 30.233312],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_ae365b0fd88943a50aa3cee2fdfafb7f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7bd01fd1e9e73632841cbe8b9eb9b344 = $(`<div id="html_7bd01fd1e9e73632841cbe8b9eb9b344" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Володимирівська,17, С. Білогородка, Київська область)</div>`)[0];
+                popup_ae365b0fd88943a50aa3cee2fdfafb7f.setContent(html_7bd01fd1e9e73632841cbe8b9eb9b344);
+            
+        
+
+        circle_marker_d8401fa9e58e0a28819be037adf05dd3.bindPopup(popup_ae365b0fd88943a50aa3cee2fdfafb7f)
+        ;
+
+        
+    
+    
+            var circle_marker_a7e3e0521838d0263ba98a7475bf6750 = L.circleMarker(
+                [50.4424881, 30.1685096],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_ee9e1272f4c0d80ad8d757976ad9b170);
+        
+    
+        var popup_6bed42125436afb3235a3ec88d544656 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0236161fdaf2141654c9cdfc96ecee3f = $(`<div id="html_0236161fdaf2141654c9cdfc96ecee3f" style="width: 100.0%; height: 100.0%;">Пункт базування (вул.Комарова,38, С. Мила, Київська область)</div>`)[0];
+                popup_6bed42125436afb3235a3ec88d544656.setContent(html_0236161fdaf2141654c9cdfc96ecee3f);
+            
+        
+
+        circle_marker_a7e3e0521838d0263ba98a7475bf6750.bindPopup(popup_6bed42125436afb3235a3ec88d544656)
+        ;
+
+        
+    
+    
+            feature_group_ee9e1272f4c0d80ad8d757976ad9b170.addTo(map_1bb2370b06ef0c5b49bbaa1fe204e768);
+        
+    
+            var feature_group_1597714bbaea2faf78fe04f583bca0a0 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_83e151da38fb36a5065a7630fb6aaae2 = L.circleMarker(
+                [50.0654042, 31.4502165],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1597714bbaea2faf78fe04f583bca0a0);
+        
+    
+        var popup_d82f8d67ded3a9bfc24b754063b931e5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_69a3e0f7596556ed4af51c1be90b75fe = $(`<div id="html_69a3e0f7596556ed4af51c1be90b75fe" style="width: 100.0%; height: 100.0%;">Станція (вул. Богдана Хмельницького ,137, М. Переяслав-Хмельницький, Київська область)</div>`)[0];
+                popup_d82f8d67ded3a9bfc24b754063b931e5.setContent(html_69a3e0f7596556ed4af51c1be90b75fe);
+            
+        
+
+        circle_marker_83e151da38fb36a5065a7630fb6aaae2.bindPopup(popup_d82f8d67ded3a9bfc24b754063b931e5)
+        ;
+
+        
+    
+    
+            var circle_marker_c7ded61895dac0a731ce98358d161b40 = L.circleMarker(
+                [49.8022407, 30.1060696],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1597714bbaea2faf78fe04f583bca0a0);
+        
+    
+        var popup_21cdb3bbc2544477b8139767ef16d5f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8eb1deadb0b83e7afaee067b03f6e4af = $(`<div id="html_8eb1deadb0b83e7afaee067b03f6e4af" style="width: 100.0%; height: 100.0%;">Станція (вул. Водопійна, 40, М. Біла Церква, Київська область)</div>`)[0];
+                popup_21cdb3bbc2544477b8139767ef16d5f7.setContent(html_8eb1deadb0b83e7afaee067b03f6e4af);
+            
+        
+
+        circle_marker_c7ded61895dac0a731ce98358d161b40.bindPopup(popup_21cdb3bbc2544477b8139767ef16d5f7)
+        ;
+
+        
+    
+    
+            var circle_marker_205c6a7e11840dee02f99f3c664305ec = L.circleMarker(
+                [50.511362, 30.76447689999999],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1597714bbaea2faf78fe04f583bca0a0);
+        
+    
+        var popup_b4f3bd1bd369bc23830982270a7676ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3e0a2c2b8f2a27036233df05fe0d908 = $(`<div id="html_f3e0a2c2b8f2a27036233df05fe0d908" style="width: 100.0%; height: 100.0%;">Станція (вул. Шевченка ,14, М. Бровари, Київська область)</div>`)[0];
+                popup_b4f3bd1bd369bc23830982270a7676ae.setContent(html_f3e0a2c2b8f2a27036233df05fe0d908);
+            
+        
+
+        circle_marker_205c6a7e11840dee02f99f3c664305ec.bindPopup(popup_b4f3bd1bd369bc23830982270a7676ae)
+        ;
+
+        
+    
+    
+            var circle_marker_70e840b909a510c6c80c9786a4fc544c = L.circleMarker(
+                [50.5819482, 30.4753688],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1597714bbaea2faf78fe04f583bca0a0);
+        
+    
+        var popup_a6f6066537fb1e76a0e3cb796c343bb1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0f46c71fe297f3830ba2aaca6abf65d5 = $(`<div id="html_0f46c71fe297f3830ba2aaca6abf65d5" style="width: 100.0%; height: 100.0%;">Станція (вул. Кургузова, 1, М. Вишгород, Київська область)</div>`)[0];
+                popup_a6f6066537fb1e76a0e3cb796c343bb1.setContent(html_0f46c71fe297f3830ba2aaca6abf65d5);
+            
+        
+
+        circle_marker_70e840b909a510c6c80c9786a4fc544c.bindPopup(popup_a6f6066537fb1e76a0e3cb796c343bb1)
+        ;
+
+        
+    
+    
+            var circle_marker_a69229546dadfc54085b0110618068a2 = L.circleMarker(
+                [50.133927, 30.62759419999999],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1597714bbaea2faf78fe04f583bca0a0);
+        
+    
+        var popup_44d5cebe7ec418fe7ed86d40c7d313f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_63b2cd4e20bee6a6dee09ce729e2af22 = $(`<div id="html_63b2cd4e20bee6a6dee09ce729e2af22" style="width: 100.0%; height: 100.0%;">Станція (вул.Каштанова,52, М. Обухів, Київська область)</div>`)[0];
+                popup_44d5cebe7ec418fe7ed86d40c7d313f6.setContent(html_63b2cd4e20bee6a6dee09ce729e2af22);
+            
+        
+
+        circle_marker_a69229546dadfc54085b0110618068a2.bindPopup(popup_44d5cebe7ec418fe7ed86d40c7d313f6)
+        ;
+
+        
+    
+    
+            var circle_marker_4390d0b85a9054991083fa6ed4eb8e72 = L.circleMarker(
+                [50.079342, 29.9257219],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_1597714bbaea2faf78fe04f583bca0a0);
+        
+    
+        var popup_c0bf249b18f9f24472164bed813f36f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ecfb8d747112771c83b002dcf2f7c06d = $(`<div id="html_ecfb8d747112771c83b002dcf2f7c06d" style="width: 100.0%; height: 100.0%;">Станція (вул.Шевченка,37, М. Фастів, Київська область)</div>`)[0];
+                popup_c0bf249b18f9f24472164bed813f36f7.setContent(html_ecfb8d747112771c83b002dcf2f7c06d);
+            
+        
+
+        circle_marker_4390d0b85a9054991083fa6ed4eb8e72.bindPopup(popup_c0bf249b18f9f24472164bed813f36f7)
+        ;
+
+        
+    
+    
+            feature_group_1597714bbaea2faf78fe04f583bca0a0.addTo(map_1bb2370b06ef0c5b49bbaa1fe204e768);
+        
+    
+            var feature_group_64687629419efbcf0af9f93f6e8c387d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_749ec9e011f139213f0e425283a63ff8 = L.circleMarker(
+                [50.47164979999999, 30.4693948],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_64687629419efbcf0af9f93f6e8c387d);
+        
+    
+        var popup_8898d575157d69b2174a97d1c272c580 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_171db066b98c3bc9c02a952503d80bdf = $(`<div id="html_171db066b98c3bc9c02a952503d80bdf" style="width: 100.0%; height: 100.0%;">ЦЕМД (вул. Багговутівська, 1, Київ, Київська область)</div>`)[0];
+                popup_8898d575157d69b2174a97d1c272c580.setContent(html_171db066b98c3bc9c02a952503d80bdf);
+            
+        
+
+        circle_marker_749ec9e011f139213f0e425283a63ff8.bindPopup(popup_8898d575157d69b2174a97d1c272c580)
+        ;
+
+        
+    
+    
+            feature_group_64687629419efbcf0af9f93f6e8c387d.addTo(map_1bb2370b06ef0c5b49bbaa1fe204e768);
+        
+    
+            var layer_control_2d6e96e7fe9a57c25a0c036df5c5d202_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_b07ec39e461adbb69468a83105e44c55,
+                },
+                overlays :  {
+                    "\u041e\u0414\u0421" : feature_group_c97cbd96cdc672a30b17cd8663f0e128,
+                    "\u041f\u0456\u0434\u0441\u0442\u0430\u043d\u0446\u0456\u044f" : feature_group_f3076091f29170e830b4258fd40984d5,
+                    "\u041f\u0443\u043d\u043a\u0442 \u0431\u0430\u0437\u0443\u0432\u0430\u043d\u043d\u044f" : feature_group_ee9e1272f4c0d80ad8d757976ad9b170,
+                    "\u0421\u0442\u0430\u043d\u0446\u0456\u044f" : feature_group_1597714bbaea2faf78fe04f583bca0a0,
+                    "\u0426\u0415\u041c\u0414" : feature_group_64687629419efbcf0af9f93f6e8c387d,
+                },
+            };
+            let layer_control_2d6e96e7fe9a57c25a0c036df5c5d202 = L.control.layers(
+                layer_control_2d6e96e7fe9a57c25a0c036df5c5d202_layers.base_layers,
+                layer_control_2d6e96e7fe9a57c25a0c036df5c5d202_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_1bb2370b06ef0c5b49bbaa1fe204e768);
+
+        
+</script>
+</html>
